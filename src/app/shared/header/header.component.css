@@ -1,0 +1,246 @@
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 999;
+  width: calc(100vw - 60px); /* 60px = sidebar colapsado */
+  margin-left: 60px;
+  transition: all 0.3s ease;
+}
+
+.header.sidebar-expanded {
+  width: calc(100vw - 250px); /* 250px = sidebar expandido */
+  margin-left: 250px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: -40px;
+  height: 80px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Logo */
+.logo-section {
+  display: flex;
+  align-items: center;
+  min-width: 150px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c5aa0;
+  position: relative;
+  padding-left: 25px;
+}
+
+.logo-text::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  background-color: #2c5aa0;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px #2c5aa0;
+}
+
+/* Navegación */
+.navigation {
+  display: flex;
+  gap: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #2c5aa0;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #2c5aa0;
+}
+
+/* Sección derecha */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 400px;
+  justify-content: flex-end;
+}
+
+/* Selector de ubicación */
+.location-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.location-selector:hover {
+  background-color: #e9ecef;
+}
+
+.location-text {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Iconos de acción */
+.action-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon-container {
+  position: relative;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.icon-container:hover {
+  background-color: #f8f9fa;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Perfil de usuario */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.user-profile:hover {
+  background-color: #f8f9fa;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Iconos usando CSS (puedes reemplazar con Font Awesome o iconos SVG) */
+.icon-location::before { content: '📍'; }
+.icon-arrow-down::before { content: '▼'; font-size: 10px; }
+.icon-bell::before { content: '🔔'; }
+.icon-message::before { content: '💬'; }
+.icon-heart::before { content: '❤️'; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .navigation {
+    position: static;
+    transform: none;
+    gap: 25px;
+  }
+  
+  .header-container {
+    justify-content: space-between;
+  }
+  
+  .right-section {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    display: none;
+  }
+  
+  .location-text {
+    display: none;
+  }
+  
+  .user-name {
+    display: none;
+  }
+  
+  .header-container {
+    padding: 0 20px;
+  }
+  
+  .right-section {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .action-icons {
+    gap: 10px;
+  }
+  
+  .right-section {
+    gap: 10px;
+    min-width: auto;
+  }
+  
+  .header-container {
+    padding: 0 15px;
+  }
+}

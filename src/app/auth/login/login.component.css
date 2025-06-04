@@ -1,0 +1,233 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ /* Fondo */
+ .background {
+     height: 100vh;
+     background: linear-gradient(135deg, #8B2635 0%, #A73C52 100%);
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     position: relative;
+     overflow: hidden;
+ }
+
+ /* Título */
+ .title {
+     text-align: center;
+     color: white;
+     margin-bottom: 30px;
+ }
+
+ .title h1 {
+     font-size: 42px;
+     font-weight: 300;
+     letter-spacing: 3px;
+     margin: 0;
+ }
+
+ .title .star {
+     color: white;
+     font-size: 42px;
+     font-weight: 300;
+ }
+
+ .title p {
+     margin: 0;
+     font-size: 18px;
+     font-weight: 300;
+     margin-top: -5px;
+     margin-left: 10px;
+ }
+
+ /* Caja de login */
+ .login-box {
+     background: white;
+     border-radius: 12px;
+     padding: 0;
+     width: 500px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+ }
+
+ /* Sección superior */
+ .logo-section {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     background: white;
+     padding: 35px 40px 0px 40px;
+     border-radius: 12px 12px 0 0;
+ }
+
+ /* Sección inferior */
+ .form-section {
+     width: 100%;
+     background: linear-gradient(135deg, #f093a1 0%, #f36e89 100%);
+     padding: 25px 40px 30px 40px;
+     border-radius: 0 0 12px 12px;
+ }
+
+ .logo-circle {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     background-color: #8B2635;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 8px;
+ }
+
+ .logo-circle::before {
+     content: 'S';
+     color: white;
+     font-size: 24px;
+     font-weight: bold;
+ }
+
+ .logo-text {
+     font-size: 16px;
+     color: #333;
+     font-weight: 500;
+     margin-bottom: 15px;
+ }
+
+ .separator {
+     width: 500px;
+     height: 3px;
+     background: linear-gradient(90deg, #8B2635 0%, #A73C52 50%, #C4516D 100%);
+     border-radius: 2px;
+     margin: 0;
+ }
+
+ /* Formulario */
+ .login-form {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Inputs */
+ .input-field {
+     width: 100%;
+     padding: 14px 16px;
+     margin-bottom: 12px;
+     border: none;
+     border-radius: 8px;
+     background-color: white;
+     font-size: 14px;
+     color: #666;
+     outline: none;
+     transition: background-color 0.2s;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+ }
+
+ .input-field::placeholder {
+     color: #999;
+     font-size: 14px;
+ }
+
+ .input-field:focus {
+     background-color: #f0f2f5;
+ }
+
+ /* Container de contraseña */
+ .password-container {
+     position: relative;
+     width: 100%;
+     margin-bottom: 20px;
+ }
+
+ .password-container .input-field {
+     margin-bottom: 0;
+     padding-right: 45px;
+ }
+
+ .eye-button {
+     position: absolute;
+     right: 12px;
+     top: 50%;
+     transform: translateY(-50%);
+     background: none;
+     border: none;
+     cursor: pointer;
+     font-size: 20px;
+     color: #8B2635;
+     padding: 5px;
+     width: 32px;
+     height: 32px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-radius: 50%;
+     transition: all 0.2s ease;
+ }
+
+ .eye-button:hover {
+     background-color: rgba(139, 38, 53, 0.1);
+     color: #A73C52;
+ }
+
+ .eye-icon {
+     width: 20px;
+     height: 20px;
+     fill: currentColor;
+ }
+
+ /* Botón */
+ .login-button {
+     background: linear-gradient(135deg, #8B2635 0%, #A73C52 100%);
+     color: white;
+     padding: 14px;
+     width: 100%;
+     border: none;
+     border-radius: 25px;
+     font-size: 16px;
+     font-weight: 500;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     margin-bottom: 5px;
+ }
+
+ .login-button:hover {
+     transform: translateY(-1px);
+     box-shadow: 0 4px 12px rgba(139, 38, 53, 0.3);
+ }
+
+ .login-button:active {
+     transform: translateY(0);
+ }
+
+ /* Texto de redirección */
+ .redirect-text {
+     margin-top: 20px;
+     font-size: 13px;
+     color: white;
+     text-align: center;
+ }
+
+ .redirect-text .highlight {
+     font-weight: 600;
+ }
+
+ /* Responsive */
+ @media (max-width: 480px) {
+     .login-box {
+         width: 90%;
+         max-width: 340px;
+     }
+
+     .title h1 {
+         font-size: 36px;
+     }
+ }

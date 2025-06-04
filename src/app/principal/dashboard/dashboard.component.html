@@ -1,0 +1,118 @@
+<div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Dashboard de Ingresos</h1>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <button class="filter-btn" ng-class="{active: selectedPeriod === 'semana'}" 
+                    ng-click="setSelectedPeriod('semana')">Semana</button>
+            <button class="filter-btn" ng-class="{active: selectedPeriod === 'mes'}" 
+                    ng-click="setSelectedPeriod('mes')">Mes</button>
+            <button class="filter-btn" ng-class="{active: selectedPeriod === 'trimestre'}" 
+                    ng-click="setSelectedPeriod('trimestre')">Trimestre</button>
+            <button class="filter-btn" ng-class="{active: selectedPeriod === 'año'}" 
+                    ng-click="setSelectedPeriod('año')">Año</button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">$328,500</div>
+                        <div class="stat-label">Ingresos Totales</div>
+                    </div>
+                    <div class="stat-icon revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+12.5% vs mes anterior</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">15.3%</div>
+                        <div class="stat-label">Crecimiento</div>
+                    </div>
+                    <div class="stat-icon growth">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+8.2% vs mes anterior</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">2,847</div>
+                        <div class="stat-label">Clientes Activos</div>
+                    </div>
+                    <div class="stat-icon clients">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-change negative">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>-2.1% vs mes anterior</span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">1,429</div>
+                        <div class="stat-label">Transacciones</div>
+                    </div>
+                    <div class="stat-icon orders">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                </div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>+5.7% vs mes anterior</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3 class="chart-title">Ingresos vs Gastos Mensuales</h3>
+                <canvas id="revenueChart" width="400" height="200"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Distribución por Categoría</h3>
+                <canvas id="categoryChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- Tabla de Productos Top -->
+        <div class="table-container">
+            <h3 class="chart-title">Top 10 Productos por Ingresos</h3>
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Producto</th>
+                        <th>Ventas</th>
+                        <th>Ingresos</th>
+                        <th>Cambio %</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>

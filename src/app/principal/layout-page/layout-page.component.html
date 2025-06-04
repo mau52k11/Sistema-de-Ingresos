@@ -1,0 +1,7 @@
+<div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
+    <app-sidebar [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
+</div>
+<div>
+    <app-header [isSidebarCollapsed]="isSidebarCollapsed"></app-header>
+</div>
+<router-outlet></router-outlet>
