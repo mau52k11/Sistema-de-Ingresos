@@ -25,11 +25,6 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
-      console.log('Login attempt:', formData);
-      
-      // Aquí iría la lógica de autenticación
-      // Ejemplo: this.authService.login(formData.username, formData.password)
-      
       alert('Formulario enviado. Ver consola para detalles.');
     } else {
       console.log('Formulario inválido');
@@ -44,7 +39,6 @@ export class LoginComponent {
     });
   }
 
-  // Getters para facilitar el acceso a los controles en el template
   get username() {
     return this.loginForm.get('username');
   }
@@ -53,7 +47,6 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  // Método para verificar si un campo tiene errores
   hasError(fieldName: string): boolean {
     const field = this.loginForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));

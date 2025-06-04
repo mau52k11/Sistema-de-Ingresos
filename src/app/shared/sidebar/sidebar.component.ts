@@ -18,50 +18,50 @@ export class SidebarComponent {
 
   menuItems: MenuItem[] = [
     {
-      icon: 'fas fa-home fa-2x',
+      icon: 'fas fa-home custom-icon',
       label: 'Dashboard',
     },
     {
-      icon: 'fa-solid fa-scale-balanced fa-2x',
+      icon: 'fa-solid fa-scale-balanced custom-icon',
       label: 'Administración',
       isOpen: false,
       children: [
-        { icon: 'fas fa-user fa-2x', label: 'Cuentas contables' },
-        { icon: 'fas fa-lock fa-2x', label: 'Ley de ingresos' },
+        { icon: 'fas fa-user custom-icon', label: 'Cuentas contables' },
+        { icon: 'fas fa-lock custom-icon', label: 'Ley de ingresos' },
       ]
     },
     {
-      icon: 'fa-solid fa-arrow-up-right-dots fa-2x',
+      icon: 'fa-solid fa-arrow-up-right-dots custom-icon',
       label: 'Censo',
       isOpen: false,
       children: [
-        { icon: 'fas fa-user  fa-2x', label: 'Cuestionarios' },
-        { icon: 'fas fa-lock fa-2x', label: 'Formularios' },
-        { icon: 'fas fa-user fa-2x', label: 'Comercios Censados'}
+        { icon: 'fas fa-user  custom-icon', label: 'Cuestionarios' },
+        { icon: 'fas fa-lock custom-icon', label: 'Formularios' },
+        { icon: 'fas fa-user custom-icon', label: 'Comercios Censados'}
       ]
     },
     {
-      icon: 'fas fa-envelope fa-2x',
+      icon: 'fas fa-envelope custom-icon',
       label: 'Reportería'
     },
     {
-      icon: 'fa-solid fa-money-bill-transfer fa-2x',
+      icon: 'fa-solid fa-money-bill-transfer custom-icon',
       label: 'Ingresos'
     },
     {
-      icon: 'fa-solid fa-shield fa-2x',
+      icon: 'fa-solid fa-shield custom-icon',
       label: 'Seguridad'
     },
     {
-      icon: 'fa-solid fa-headset fa-2x',
+      icon: 'fa-solid fa-headset custom-icon',
       label: 'Soporte'
     },
     {
-      icon: 'fa-solid fa-calculator fa-2x',
+      icon: 'fa-solid fa-calculator custom-icon',
       label: 'Contabilidad'
     }, 
     {
-      icon: 'fa-solid fa-gear fa-2x',
+      icon: 'fa-solid fa-gear custom-icon',
       label: 'Gestión de Temas'
     }
   ];
