@@ -13,11 +13,13 @@ import { ReporteriaComponent } from './reporteria/reporteria.component';
 import { SeguridadComponent } from './seguridad/seguridad.component';
 import { SoporteComponent } from './soporte/soporte.component';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
+import { OpcionesComponent } from './opciones/opciones.component';
 
 const routes: Routes = [
     {
         path: '', component: LayoutPageComponent,
         children: [
+            { path: 'opciones', component: OpcionesComponent},
             { path: 'comercios-censados', component: ComerciosCensadosComponent },
             { path: 'contabilidad', component: ContabilidadComponent },
             { path: 'cuentas-contables', component: CuentasContablesComponent },

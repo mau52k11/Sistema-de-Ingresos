@@ -1,4 +1,4 @@
-<div class="sidebar" [ngClass]="{ 'sidebar-collapsed': isSidebarCollapsed }">
+<!-- <div class="sidebar" [ngClass]="{ 'sidebar-collapsed': isSidebarCollapsed }">
     <div class="sidebar-header">
         <a>{{
             isSidebarCollapsed ? 'M' : 'MENÚ'
@@ -30,4 +30,22 @@
             </ng-container>
         </ul>
     </div>
+</div> -->
+<div class="sidebar">
+  <div class="sidebar-header"></div>
+  <div class="sidebar-menu">
+    <ul>
+      <ng-container *ngFor="let item of menuItems">
+        <li class="sidebar-menu-item" (click)="onMenuClick(item)">
+          <a class="sidebar-item" [title]="item.label">
+            <mat-icon class="custom-icon">{{item.icon}}</mat-icon>
+          </a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <div class="sidebar-footer">
+    <div class="text-footer">SIS</div>
+  </div>
 </div>
+

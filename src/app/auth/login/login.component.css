@@ -7,7 +7,8 @@
  /* Fondo */
  .background {
      height: 100vh;
-     background: linear-gradient(135deg, #8B2635 0%, #A73C52 100%);
+     /* background: linear-gradient(135deg, #8B2635 0%, #A73C52 100%); */
+     background: linear-gradient(135deg, #26558b 0%, #3c8ea7 100%);
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -45,18 +46,20 @@
      margin-left: 10px;
  }
 
- /* Caja de login */
- .login-box {
-     background: white;
-     border-radius: 12px;
-     padding: 0;
-     width: 500px;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-     overflow: hidden;
- }
+.login-box {
+    background: rgba(255, 255, 255, 0.08); /* translúcido */
+    backdrop-filter: blur(10px); /* efecto glass */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* línea visible pero sutil */
+    border-radius: 16px;
+    padding: 0;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* sombra elegante */
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
 
  /* Sección superior */
  .logo-section {
@@ -72,7 +75,7 @@
  /* Sección inferior */
  .form-section {
      width: 100%;
-     background: linear-gradient(135deg, #f093a1 0%, #f36e89 100%);
+     background: linear-gradient(135deg, #93a9f0 0%, #5c4ac5 100%);
      padding: 25px 40px 30px 40px;
      border-radius: 0 0 12px 12px;
  }
@@ -81,7 +84,7 @@
      width: 50px;
      height: 50px;
      border-radius: 50%;
-     background-color: #8B2635;
+     background-color: #26418b;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -105,7 +108,8 @@
  .separator {
      width: 500px;
      height: 3px;
-     background: linear-gradient(90deg, #8B2635 0%, #A73C52 50%, #C4516D 100%);
+     /* background: linear-gradient(90deg, #8B2635 0%, #A73C52 50%, #C4516D 100%); */
+     background: linear-gradient(90deg, #26468b 0%, #3c50a7 50%, #5159c4 100%);
      border-radius: 2px;
      margin: 0;
  }
@@ -162,7 +166,8 @@
      border: none;
      cursor: pointer;
      font-size: 20px;
-     color: #8B2635;
+     /* color: #8B2635; */
+     color: #26498b;
      padding: 5px;
      width: 32px;
      height: 32px;
@@ -175,7 +180,8 @@
 
  .eye-button:hover {
      background-color: rgba(139, 38, 53, 0.1);
-     color: #A73C52;
+     /* color: #A73C52; */
+     color: #3c43a7;
  }
 
  .eye-icon {
@@ -186,7 +192,7 @@
 
  /* Botón */
  .login-button {
-     background: linear-gradient(135deg, #8B2635 0%, #A73C52 100%);
+     background: linear-gradient(135deg, #26418b 0%, #3c50a7 100%);
      color: white;
      padding: 14px;
      width: 100%;
@@ -195,13 +201,15 @@
      font-size: 16px;
      font-weight: 500;
      cursor: pointer;
-     transition: all 0.3s ease;
+     transition: background 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
      margin-bottom: 5px;
  }
 
  .login-button:hover {
-     transform: translateY(-1px);
-     box-shadow: 0 4px 12px rgba(139, 38, 53, 0.3);
+     background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+     /* verde perrón */
+     transform: translateY(-2px) scale(1.02);
+     box-shadow: 0 8px 16px rgba(46, 204, 113, 0.4);
  }
 
  .login-button:active {
@@ -231,3 +239,15 @@
          font-size: 36px;
      }
  }
+
+.bottom-border-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.15), transparent);
+    border-top: 1px solid rgba(255, 255, 255, 0.3); /* línea visible y opaca */
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.2); /* leve sombra hacia arriba */
+    pointer-events: none;
+}

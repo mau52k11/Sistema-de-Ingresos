@@ -20,6 +20,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PrincipalRoutingModule } from './principal-routing.module';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { NgChartsModule } from 'ng2-charts';
+import { OpcionesComponent } from './opciones/opciones.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { NgChartsModule } from 'ng2-charts';
     ReporteriaComponent,
     SeguridadComponent,
     SoporteComponent,
+    OpcionesComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,9 @@ import { NgChartsModule } from 'ng2-charts';
     SharedModule,
     FormsModule,
     PrincipalRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    MatIconModule,
+    MatIcon
   ],
   providers: [
   ]

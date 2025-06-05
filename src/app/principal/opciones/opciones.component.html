@@ -1,0 +1,8 @@
+<div class="container" *ngIf="submenus?.length">
+  <ul>
+    <li *ngFor="let submenu of submenus">
+      <a [routerLink]="submenu.children || '/'">{{ submenu.label }}</a>
+    </li>
+  </ul>
+</div>
+

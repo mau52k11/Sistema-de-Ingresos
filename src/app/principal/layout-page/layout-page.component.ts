@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from '../../shared/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-layout-page',
@@ -7,17 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout-page.component.css']
 })
 export class LayoutPageComponent {
-  isSidebarCollapsed = true;
-  private collapseTimeout: any;
 
-  onMouseEnterSidebar() {
-    clearTimeout(this.collapseTimeout);
-    this.isSidebarCollapsed = false;
-  }
+  selectedSubmenus: MenuItem['children'] | null = null;
 
-  onMouseLeaveSidebar() {
-    this.collapseTimeout = setTimeout(() => {
-      this.isSidebarCollapsed = true;
-    }, 300);
+  onMenuItemSelected(item: MenuItem) {
+    this.selectedSubmenus = item.children ?? null;
   }
+  // isSidebarCollapsed = true;
+  // private collapseTimeout: any;
+
+  // onMouseEnterSidebar() {
+  //   clearTimeout(this.collapseTimeout);
+  //   this.isSidebarCollapsed = false;
+  // }
+
+  // onMouseLeaveSidebar() {
+  //   this.collapseTimeout = setTimeout(() => {
+  //     this.isSidebarCollapsed = true;
+  //   }, 300);
+  // }
 }
