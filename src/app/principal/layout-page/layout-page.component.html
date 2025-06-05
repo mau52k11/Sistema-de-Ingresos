@@ -1,7 +1,11 @@
-<div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
+<div class="main-container">
+  <div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
     <app-sidebar [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
+  </div>
+  
+  <app-header></app-header>
+  
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<div>
-    <app-header [isSidebarCollapsed]="isSidebarCollapsed"></app-header>
-</div>
-<router-outlet></router-outlet>

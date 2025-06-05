@@ -19,6 +19,7 @@ import { SoporteComponent } from './soporte/soporte.component';
 import { SharedModule } from '../shared/shared.module';
 import { PrincipalRoutingModule } from './principal-routing.module';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LayoutPageComponent } from './layout-page/layout-page.component';
     RouterModule,
     SharedModule,
     FormsModule,
-    PrincipalRoutingModule
+    PrincipalRoutingModule,
+    NgChartsModule
   ],
   providers: [
   ]

@@ -1,0 +1,15 @@
+.main-container {
+  position: relative;
+}
+
+.content {
+  margin-top: 80px; /* Altura del header */
+  margin-left: 130px; /* Ancho del sidebar cuando está expandido */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+/* Ajustar según el estado del sidebar si es necesario */
+.content.sidebar-collapsed {
+  margin-left: 75px;
+}

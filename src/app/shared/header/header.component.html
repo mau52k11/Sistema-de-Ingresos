@@ -1,12 +1,11 @@
+<!-- <header class="header" [class.sidebar-expanded]="!isSidebarCollapsed"> -->
 <header class="header">
     <div class="header-container">
-        <img src="images/ingresos.png" style="width: 50px; height: 50px;" alt="">
 
-         <span class="logo-text">SISTEMA INGRESOS</span>
-        <!-- Logo -->
         <div class="logo-section">
             <div class="logo">
-               
+                <img src="images/ingresos.png" style="width: 50px; height: 50px;" alt="Logo">
+                <span class="logo-text">SISTEMA INGRESOS</span>
             </div>
         </div>
 
@@ -22,7 +21,7 @@
             <!-- Iconos de acción -->
             <div class="action-icons">
                 <!-- Notificaciones -->
-                <div class="icon-container" (click)="onNotificationClick()">
+                <div class="icon-container" (click)="onNotificationClick()" aria-label="Notificaciones" role="button">
                     <i class="icon-bell"></i>
                     <span class="badge" *ngIf="notifications > 0">{{ notifications }}</span>
                 </div>
