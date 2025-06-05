@@ -4,10 +4,10 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
-  left: 0; /* Siempre desde el borde izquierdo */
+  left: 0; 
   right: 0;
-  z-index: 1001; /* Mayor que el sidebar */
-  width: 100vw; /* Ocupa todo el viewport */
+  z-index: 1001;
+  width: 100vw;
   height: 80px;
   transition: all 0.3s ease;
 }
@@ -36,7 +36,6 @@
   padding: 0 20px; /* Padding uniforme */
 }
 
-/* El resto de tus estilos permanecen igual */
 .logo-section {
   display: flex;
   align-items: center;
