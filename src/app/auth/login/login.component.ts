@@ -24,15 +24,17 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      const formData = this.loginForm.value;
-      alert('Formulario enviado. Ver consola para detalles.');
+  const { username, password } = this.loginForm.value;
+
+  if (username === 'admin' && password === 'admin') {
+    // Credenciales correctas
     this.router.navigate(['/home/dashboard']);
-    } else {
-      console.log('Formulario inválido');
-      this.markFormGroupTouched();
-    }
+  } else {
+    // Credenciales incorrectas
+    alert('Usuario o contraseña incorrectos');
+    this.loginForm.reset(); // Opcional: limpia el formulario
   }
+}
 
   private markFormGroupTouched(): void {
     Object.keys(this.loginForm.controls).forEach(key => {

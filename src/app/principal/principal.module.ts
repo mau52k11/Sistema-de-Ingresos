@@ -22,6 +22,7 @@ import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { NgChartsModule } from 'ng2-charts';
 import { OpcionesComponent } from './opciones/opciones.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { OpcionesHeaderComponent } from './opciones-header/opciones-header.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     SeguridadComponent,
     SoporteComponent,
     OpcionesComponent,
+    OpcionesHeaderComponent,
   ],
   imports: [
     CommonModule,
