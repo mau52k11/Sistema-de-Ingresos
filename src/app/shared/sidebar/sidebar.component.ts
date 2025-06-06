@@ -491,14 +491,19 @@ export class SidebarComponent {
         }
       ]
     },
+    {
+      icon: 'category',
+      label: 'Categorías y Catálogos',
+      route: '/clasificaciones'
+    },
     // {
     //   icon: 'receipt_long',
     //   label: 'Contabilidad'
     // },
-    // {
-    //   icon: 'tune',
-    //   label: 'Gestión de Temas'
-    // }
+    {
+      icon: 'tune',
+      label: 'Gestión de Temas'
+    }
   ];
 
   onMenuClick(item: MenuItem) {

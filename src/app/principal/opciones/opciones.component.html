@@ -7,19 +7,27 @@
 </div> -->
 <div class="opciones-container">
   <h2>{{ titulo }}</h2>
-  <!-- <h2 class="titulo">Otros procesos</h2> -->
 
   <div class="opciones-grid">
-    <div *ngFor="let submenu of submenus; let i = index" 
-         class="grupo-opcion" 
-         [class.inicial]="!mostrarAnimacion[i]">
+    <div *ngFor="let submenu of submenus; let i = index" class="grupo-opcion" [class.inicial]="!mostrarAnimacion[i]">
       <div class="encabezado">{{ submenu.label }}</div>
+
       <ul class="lista">
-        <li *ngFor="let child of submenu.children">{{ child.label }}</li>
+        <li *ngFor="let child of submenu.children">
+          <div>{{ child.label }}</div>
+
+          <ul *ngIf="child.children?.length">
+            <li *ngFor="let grandchild of child.children">
+              {{ grandchild.label }}
+            </li>
+          </ul>
+
+        </li>
       </ul>
     </div>
   </div>
 </div>
+
 
 
 <!-- <div class="container" *ngIf="submenus?.length">

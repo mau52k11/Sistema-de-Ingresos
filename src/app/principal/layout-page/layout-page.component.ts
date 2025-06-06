@@ -31,6 +31,10 @@ export class LayoutPageComponent {
   if (item.route === '/dashboard') {
     this.mostrarOpciones = false;
     this.router.navigate([item.route]);
+  } else if (item.route === '/clasificaciones') {
+    this.mostrarOpciones = false;
+    // Para clasificaciones, navegamos pero SÍ mostramos opciones
+    this.router.navigate(['/clasificaciones']);
   } else {
     // Para otros, solo mostramos opciones y no navegamos
     this.mostrarOpciones = true;

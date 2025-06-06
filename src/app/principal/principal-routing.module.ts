@@ -14,6 +14,7 @@ import { SeguridadComponent } from './seguridad/seguridad.component';
 import { SoporteComponent } from './soporte/soporte.component';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { OpcionesComponent } from './opciones/opciones.component';
+import { ClasificacionesComponent } from './clasificaciones/clasificaciones.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,7 @@ const routes: Routes = [
             { path: 'reporteria', component: ReporteriaComponent },
             { path: 'seguridad', component: SeguridadComponent },
             { path: 'soporte', component: SoporteComponent },
+            { path: 'clasificaciones', component: ClasificacionesComponent}
         ],
     }
 ];

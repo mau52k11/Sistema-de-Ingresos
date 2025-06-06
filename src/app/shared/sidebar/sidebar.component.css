@@ -107,7 +107,7 @@
   text-decoration: none;
   transition: background 0.3s ease;
   cursor: pointer;
-  min-height: 50px;
+  min-height: 40px;
   overflow: visible !important;
   position: relative;
 }
@@ -126,7 +126,7 @@
 }
 
 .sidebar-item .custom-icon {
-  font-size: clamp(20px, 2.2vw, 32px);
+  font-size: clamp(20px, 2vw, 32px);
   line-height: 1; 
 }
 
@@ -145,7 +145,7 @@
 
 .custom-icon {
   margin-left: 5px;
-  margin-top: 20px;
+  margin-top: 15px;
   flex-shrink: 0;
   font-size: clamp(24px, 2vw, 30px);
   display: flex;
