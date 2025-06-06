@@ -98,12 +98,23 @@
      font-weight: bold;
  }
 
- .logo-text {
+ /* .logo-text {
      font-size: 16px;
      color: #333;
      font-weight: 500;
      margin-bottom: 15px;
- }
+ } */
+
+ .logo-text {
+    font-size: 28px;
+    font-family: 'Orbitron', sans-serif;
+    color: #003cff;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 60, 255, 0.4);
+}
 
  .separator {
      width: 500px;
@@ -217,7 +228,7 @@
  }
 
  /* Texto de redirección */
- .redirect-text {
+ /* .redirect-text {
      margin-top: 20px;
      font-size: 13px;
      color: white;
@@ -226,7 +237,32 @@
 
  .redirect-text .highlight {
      font-weight: 600;
- }
+ } */
+
+ .redirect-text {
+    margin-top: 30px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.redirect-text .highlight {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    color: #0026ff;
+    background-color: rgba(0, 229, 255, 0.1);
+    padding: 2px 10px;
+    border-radius: 6px;
+    letter-spacing: 1.5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.redirect-text .highlight:hover {
+    transform: scale(1.05);
+}
+
 
  /* Responsive */
  @media (max-width: 480px) {

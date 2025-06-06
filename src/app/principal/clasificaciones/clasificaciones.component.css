@@ -1,63 +1,74 @@
-    .menu-container {
-        font-family: Arial, sans-serif;
-        width: 100%;
-        max-width: 500px;
-        background: #f5f5f5;
-        border: 1px solid #ddd;
-    }
+.menu-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
 
-    .menu-item {
-        border-bottom: 1px solid #e0e0e0;
-    }
+.menu-item {
+  border-bottom: 1px solid #e5e7eb;
+}
 
-    .menu-header {
-        display: flex;
-        align-items: center;
-        padding: 10px 12px;
-        cursor: pointer;
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-    }
+.menu-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
 
-    .menu-header:hover {
-        opacity: 0.9;
-    }
+.menu-header:hover {
+  background-color: #f3f4f6;
+}
 
-    .level-0 {
-        background: #1e5aa8;
-    }
+.level-0 {
+  background-color: #1e3a8a;
+  color: #ffffff;
+}
 
-    .level-1 {
-        background: #2b6cb0;
-    }
+.level-1 {
+  background-color: #2563eb;
+  color: #ffffff;
+}
 
-    .level-2 {
-        background: #3182ce;
-    }
+.level-2 {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
 
-    .level-3,
-    .level-4 {
-        background: white;
-        color: #333;
-        font-weight: normal;
-        border-left: 3px solid #e2e8f0;
-    }
+.level-3,
+.level-4 {
+  background-color: #f9fafb;
+  color: #1f2937;
+  font-weight: 400;
+  border-left: 3px solid #cbd5e1;
+}
 
-    .icon {
-        margin-right: 8px;
-        font-size: 10px;
-    }
+.icon {
+  margin-right: 10px;
+  font-size: 12px;
+  width: 16px;
+  text-align: center;
+}
 
-    .label {
-        flex: 1;
-    }
+.label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-    .arrow {
-        font-size: 10px;
-        margin-left: 8px;
-    }
+.arrow {
+  font-size: 10px;
+  margin-left: 6px;
+}
 
-    .children {
-        background: #fafafa;
-    }
+.children {
+  background-color: #f9fafb;
+}
