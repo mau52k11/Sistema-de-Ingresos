@@ -139,11 +139,36 @@
   background-color: #1abc9c;
 }
 
-.custom-icon {
+/* .custom-icon {
   font-size: 25px;
   margin-left: 5px;
   flex-shrink: 0;
+} */
+ .custom-icon {
+  margin-left: 10px;
+  flex-shrink: 0;
+  font-size: clamp(18px, 1.5vw, 25px);
 }
+
+@media (min-width: 1440px) {
+  .custom-icon {
+    font-size: 22px;
+  }
+  .sidebar-item {
+    padding: 0.4rem 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .custom-icon {
+    font-size: 20px;
+  }
+  .sidebar-item {
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+
 
 .sidebar-logo {
   max-width: 40px;

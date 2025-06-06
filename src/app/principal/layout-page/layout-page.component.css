@@ -31,16 +31,11 @@
   margin-left: 75px;
 }
 
-.main-container.modules-active .content,
-.main-container.modules-active app-header {
+.main-container.modules-active .content {
   filter: blur(2px);
   pointer-events: none;
 }
 
-.main-container.modules-active app-sidebar {
-  filter: blur(2px);
-  pointer-events: none;
-}
 
 .main-container * {
   transition: filter 0.3s ease;
