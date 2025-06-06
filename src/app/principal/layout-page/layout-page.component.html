@@ -14,7 +14,7 @@
                   [titulo]="menuSeleccionado?.label || ''">
     </app-opciones>
 
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="!mostrarOpciones"></router-outlet>
   </div>
 
   <!-- <div>

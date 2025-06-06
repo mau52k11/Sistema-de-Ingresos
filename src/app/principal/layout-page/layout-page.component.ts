@@ -11,15 +11,22 @@ import { Router } from '@angular/router';
 export class LayoutPageComponent {
 
   selectedSubmenus: MenuItem['children'] | null = null;
+  mostrarOpciones: boolean = false;
 
   constructor(private router: Router){}
 
   onMenuItemSelected(item: MenuItem) {
-    this.selectedSubmenus = item.children ?? null;
-    this.menuSeleccionado = item;
-    if (item.route) {
-      this.router.navigate([item.route]);
-    }
+  this.menuSeleccionado = item;
+  this.selectedSubmenus = item.children || null;
+
+  // Si es dashboard, navegamos y ocultamos Opciones
+  if (item.route === '/dashboard') {
+    this.mostrarOpciones = false;
+    this.router.navigate([item.route]);
+  } else {
+    // Para otros, solo mostramos opciones y no navegamos
+    this.mostrarOpciones = true;
+  }
   }
 
   menuSeleccionado: MenuItem | null = null;

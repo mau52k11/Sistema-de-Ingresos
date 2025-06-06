@@ -12,19 +12,6 @@
   transition: all 0.3s ease;
 }
 
-/* REMOVER o COMENTAR estas reglas que causaban el problema */
-/*
-.header.sidebar-expanded {
-  left: 260px;
-  width: calc(100% - 260px);
-}
-
-.header:not(.sidebar-expanded) {
-  left: 75px;
-  width: calc(100% - 75px);
-}
-*/
-
 .header-container {
   display: flex;
   align-items: center;

@@ -1,7 +1,7 @@
 .opciones-container {
   padding: 32px;
   background: linear-gradient(145deg, #f0f4f8, #ffffff);
-  max-width: 1400px;
+  max-width: 95vw;
   margin: 24px auto;
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);

@@ -19,7 +19,7 @@ const routes: Routes = [
     {
         path: '', component: LayoutPageComponent,
         children: [
-            { path: 'opciones', component: OpcionesComponent},
+            // { path: 'opciones', component: OpcionesComponent},
             { path: 'comercios-censados', component: ComerciosCensadosComponent },
             { path: 'contabilidad', component: ContabilidadComponent },
             { path: 'cuentas-contables', component: CuentasContablesComponent },
