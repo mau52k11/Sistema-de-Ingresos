@@ -1,10 +1,10 @@
-<div class="main-container">
+<div class="main-container"  [class.modules-active]="showModulesGrid">
   <!-- <div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
     <app-sidebar [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
   </div> -->
 
   <div>
-    <app-sidebar (menuSelected)="onMenuItemSelected($event)"></app-sidebar>
+    <app-sidebar (menuSelected)="onMenuItemSelected($event)" (logoClicked)="onShowModulesGrid()"></app-sidebar>
   </div>
   <app-header></app-header>
    <div class="content">
@@ -16,6 +16,8 @@
 
     <router-outlet *ngIf="!mostrarOpciones"></router-outlet>
   </div>
+
+   <app-opciones-header  *ngIf="showModulesGrid" (moduleSelected)="onModuleSelected($event)" (closeGrid)="onCloseModulesGrid()"></app-opciones-header>
 
   <!-- <div>
     <app-opciones *ngIf="selectedSubmenus" [submenus]="selectedSubmenus" [titulo]="menuSeleccionado?.label || ''"></app-opciones>

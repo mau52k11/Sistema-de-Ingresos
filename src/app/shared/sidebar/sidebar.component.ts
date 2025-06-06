@@ -9,6 +9,13 @@ export interface MenuItem {
   route?: string;
 }
 
+export interface ModuleItem {
+  code: string;
+  name: string;
+  color: string;
+  route?: string;
+}
+
 @Component({
   selector: 'app-sidebar',
   standalone: false,
@@ -18,6 +25,7 @@ export interface MenuItem {
 export class SidebarComponent {
 
   @Output() menuSelected = new EventEmitter<MenuItem>();
+  @Output() logoClicked = new EventEmitter<void>();
 
   constructor(private router: Router) { }
 
@@ -335,6 +343,10 @@ export class SidebarComponent {
     if (item.route) {
       this.router.navigate([item.route]);
     }
+  }
+
+  onLogoClick(): void {
+    this.logoClicked.emit();
   }
 
 }

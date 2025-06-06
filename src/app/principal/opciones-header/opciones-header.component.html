@@ -1,1 +1,24 @@
-<p>opciones-header works!</p>
+<!-- modules-grid.component.html -->
+<div class="modules-backdrop" (click)="onBackdropClick()">
+  <div class="modules-container" (click)="onGridClick($event)">
+    <div class="modules-header">
+      <h2>INGRESOS</h2>
+      <button class="close-button" (click)="onBackdropClick()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    
+    <div class="modules-grid">
+      <div 
+        *ngFor="let module of modules" 
+        class="module-card"
+        [style.background-color]="module.color"
+        (click)="onModuleClick(module)"
+        [title]="module.name"
+      >
+        <div class="module-code">{{ module.code }}</div>
+        <div class="module-name">{{ module.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>
