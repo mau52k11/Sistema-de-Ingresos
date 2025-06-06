@@ -21,7 +21,7 @@
   left: 0;
   z-index: 1000;
   transition: width 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
 }
@@ -38,14 +38,14 @@
   padding: 0;
   margin: 0;
   flex: 1;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .sidebar-footer {
   height: 220px;
   min-height: 220px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -100,13 +100,16 @@
 .sidebar-item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   padding: 0.65rem 1.2rem;
   color: #ecf0f1;
   text-decoration: none;
   transition: background 0.3s ease;
   cursor: pointer;
-  min-height: 40px;
+  min-height: 50px;
+  overflow: visible !important;
+  position: relative;
 }
 
 .sidebar-item:hover {
@@ -123,13 +126,14 @@
 }
 
 .sidebar-item .custom-icon {
-  font-size: clamp(16px, 1.8vw, 25px);
+  font-size: clamp(20px, 2.2vw, 32px);
+  line-height: 1; 
 }
 
 .sidebar-item-text {
-  font-size: clamp(10px, 1.2vw, 16px);
+  font-size: clamp(12px, 1.2vw, 16px);
+  white-space: nowrap;
 }
-
 
 .rotated {
   transform: rotate(180deg);
@@ -139,21 +143,26 @@
   background-color: #1abc9c;
 }
 
-/* .custom-icon {
-  font-size: 25px;
+.custom-icon {
   margin-left: 5px;
+  margin-top: 20px;
   flex-shrink: 0;
-} */
- .custom-icon {
-  margin-left: 10px;
-  flex-shrink: 0;
-  font-size: clamp(18px, 1.5vw, 25px);
+  font-size: clamp(24px, 2vw, 30px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  min-width: 32px; 
+  min-height: 32px;
+  overflow: visible !important;
+  position: relative;
 }
 
 @media (min-width: 1440px) {
   .custom-icon {
-    font-size: 22px;
+    font-size: 30px;
   }
+
   .sidebar-item {
     padding: 0.4rem 1rem;
   }
@@ -161,14 +170,13 @@
 
 @media (min-width: 1920px) {
   .custom-icon {
-    font-size: 20px;
+    font-size: 28px; 
   }
+
   .sidebar-item {
     padding: 0.3rem 0.8rem;
   }
 }
-
-
 
 .sidebar-logo {
   max-width: 40px;
@@ -215,7 +223,6 @@
 }
 
 @media (min-height: 1080px) {
-
   .sidebar-item {
     padding: 0.4rem 0.8rem;
     height: auto;
@@ -241,6 +248,7 @@
     height: 100vh;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
+    overflow: visible;
   }
 
   .sidebar.open {
@@ -263,6 +271,7 @@
   .sidebar-item {
     padding: 1rem 1.2rem;
     min-height: 55px;
+    overflow: visible;
   }
 
   .sidebar-item-text {
@@ -271,7 +280,7 @@
   }
 
   .custom-icon {
-    font-size: 24px;
+    font-size: 28px;
     margin-left: 0;
   }
 
@@ -302,4 +311,22 @@
   .sidebar-item:active {
     background-color: #34495e;
   }
+}
+.sidebar-item i,
+.sidebar-item svg,
+.sidebar-item .icon {
+  overflow: visible !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.sidebar-item .fa,
+.sidebar-item .fas,
+.sidebar-item .far,
+.sidebar-item .fab {
+  display: inline-block !important;
+  overflow: visible !important;
 }
