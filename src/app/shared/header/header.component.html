@@ -11,33 +11,6 @@
 
         <!-- Sección derecha -->
         <div class="right-section">
-            <!-- Selector de ubicación -->
-            <div class="location-selector" (click)="onLocationChange()">
-                <i class="icon-location"></i>
-                <span class="location-text">{{ selectedLocation }}</span>
-                <i class="icon-arrow-down"></i>
-            </div>
-
-            <!-- Iconos de acción -->
-            <div class="action-icons">
-                <!-- Notificaciones -->
-                <div class="icon-container" (click)="onNotificationClick()" aria-label="Notificaciones" role="button">
-                    <i class="icon-bell"></i>
-                    <span class="badge" *ngIf="notifications > 0">{{ notifications }}</span>
-                </div>
-
-                <!-- Mensajes -->
-                <div class="icon-container" (click)="onMessageClick()">
-                    <i class="icon-message"></i>
-                    <span class="badge" *ngIf="messages > 0">{{ messages }}</span>
-                </div>
-
-                <!-- Favoritos -->
-                <div class="icon-container">
-                    <i class="icon-heart"></i>
-                </div>
-            </div>
-
             <!-- Perfil de usuario -->
             <div class="user-profile" (click)="onProfileClick()">
                 <img [src]="userInfo.avatar" [alt]="userInfo.name" class="avatar">

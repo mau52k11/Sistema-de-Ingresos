@@ -1,8 +1,39 @@
-<div class="container" *ngIf="submenus?.length">
+<!-- <div class="container" *ngIf="submenus?.length">
   <ul>
     <li *ngFor="let submenu of submenus">
       <a [routerLink]="submenu.children || '/'">{{ submenu.label }}</a>
     </li>
   </ul>
+</div> -->
+<div class="opciones-container">
+  <h2>{{ titulo }}</h2>
+  <!-- <h2 class="titulo">Otros procesos</h2> -->
+
+  <div class="opciones-grid">
+    <div *ngFor="let submenu of submenus; let i = index" 
+         class="grupo-opcion" 
+         [class.inicial]="!mostrarAnimacion[i]">
+      <div class="encabezado">{{ submenu.label }}</div>
+      <ul class="lista">
+        <li *ngFor="let child of submenu.children">{{ child.label }}</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
+
+<!-- <div class="container" *ngIf="submenus?.length">
+  <ul class="opciones-menu">
+    <li class="opcion-item" *ngFor="let submenu of submenus; let i = index">
+      <a [routerLink]="submenu.children || '/'" class="opcion-link">
+        <div class="opcion-content">
+          <div class="opcion-icon">{{ getInitials(submenu.label) }}</div>
+          <div class="opcion-text">
+            <div class="opcion-titulo">{{ submenu.label }}</div>
+          </div>
+          <div class="opcion-arrow">→</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div> -->

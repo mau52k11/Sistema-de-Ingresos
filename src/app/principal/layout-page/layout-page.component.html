@@ -7,12 +7,21 @@
     <app-sidebar (menuSelected)="onMenuItemSelected($event)"></app-sidebar>
   </div>
   <app-header></app-header>
+   <div class="content">
+    <!-- Mover aquí -->
+    <app-opciones *ngIf="selectedSubmenus"
+                  [submenus]="selectedSubmenus"
+                  [titulo]="menuSeleccionado?.label || ''">
+    </app-opciones>
 
-  <div>
-    <app-opciones *ngIf="selectedSubmenus" [submenus]="selectedSubmenus"></app-opciones>
-  </div>
-  
-  <div class="content">
     <router-outlet></router-outlet>
   </div>
+
+  <!-- <div>
+    <app-opciones *ngIf="selectedSubmenus" [submenus]="selectedSubmenus" [titulo]="menuSeleccionado?.label || ''"></app-opciones>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div> -->
 </div>
