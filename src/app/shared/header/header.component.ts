@@ -9,12 +9,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
    @Input() isSidebarCollapsed: boolean = true;
 
-   locations = ['CARRETERA A CHIHUAHUA', 'CENTRO HISTÓRICO', 'ZONA INDUSTRIAL'];
-  
-  selectedLocation = 'CARRETERA A CHIHUAHUA';
-  userInfo = {
-    name: 'Juan Pérez',
-    avatar: 'images/El_Fedelobo.webp'
+    userInfo = {
+    name: 'admin',
+    avatar: 'images/user.png'
   };
 
   notifications = 3;
