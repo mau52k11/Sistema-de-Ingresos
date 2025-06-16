@@ -113,7 +113,7 @@
 }
 
 .sidebar-item:hover {
-  background-color: #34495e;
+  background-color: #4b2222;
 }
 
 .has-children .sidebar-item-arrow {
@@ -303,13 +303,13 @@
 
 @media (hover: hover) {
   .sidebar-item:hover {
-    background-color: #34495e;
+    background-color: #5e3434;
   }
 }
 
 @media (hover: none) {
   .sidebar-item:active {
-    background-color: #34495e;
+    background-color: #5e3434;
   }
 }
 .sidebar-item i,
