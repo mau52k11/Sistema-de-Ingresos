@@ -37,3 +37,43 @@
     </ng-container>
   </ng-template>
 </div>
+<!-- clasificaciones.component.html -->
+<!-- <div class="menu-container">
+  <ng-container *ngFor="let item of menuItems">
+    <div class="menu-item" [ngClass]="getItemClass(item, 0)">
+      <div class="menu-header" (click)="toggle(item)">
+        <span class="icon" *ngIf="item.children">{{ item.expanded ? '▼' : '▶' }}</span>
+        <span class="icon" *ngIf="!item.children">○</span>
+        <span class="label">{{ item.label }}</span>
+        <span class="arrow" *ngIf="item.children">▼</span>
+      </div>
+      <div class="children" *ngIf="item.expanded && item.children">
+        <ng-container
+          *ngTemplateOutlet="menuTemplate; context: { items: item.children, level: 1 }">
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #menuTemplate let-items="items" let-level="level">
+    <ng-container *ngFor="let item of items">
+      <div class="menu-item" [ngClass]="getItemClass(item, level)">
+        <div
+          class="menu-header"
+          [style.padding-left]="level > 0 ? '16px' : '16px'"
+          (click)="toggle(item)"
+        >
+          <span class="icon" *ngIf="item.children">{{ item.expanded ? '▼' : '▶' }}</span>
+          <span class="icon" *ngIf="!item.children">○</span>
+          <span class="label">{{ item.label }}</span>
+          <span class="arrow" *ngIf="item.children && level < 3">▼</span>
+        </div>
+        <div class="children" *ngIf="item.expanded && item.children">
+          <ng-container
+            *ngTemplateOutlet="menuTemplate; context: { items: item.children, level: level + 1 }">
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </ng-template>
+</div> -->

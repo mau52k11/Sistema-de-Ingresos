@@ -73,13 +73,30 @@ export class ClasificacionesComponent {
     }
   ];
 
+  // toggle(item: MenuItem) {
+  //   if (item.children) {
+  //     item.expanded = !item.expanded;
+  //   }
+  // }
+
+  // getItemClass(item: MenuItem, level: number): string {
+  //   return `level-${level}`;
+  // }
   toggle(item: MenuItem) {
-    if (item.children) {
+    if (item.children && item.children.length > 0) {
       item.expanded = !item.expanded;
     }
   }
 
   getItemClass(item: MenuItem, level: number): string {
     return `level-${level}`;
+  }
+
+  onMouseEnter(item: MenuItem) {
+    if (item.children && item.children.length > 0) {
+    }
+  }
+
+  onMouseLeave(item: MenuItem) {
   }
 }
