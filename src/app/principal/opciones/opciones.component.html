@@ -5,47 +5,97 @@
     </li>
   </ul>
 </div> -->
-<div class="opciones-container">
-  <h2>{{ titulo }}</h2>
+<!-- <div class="opciones-container" *ngFor="let submenu of submenus; let i = index">
+  <h2>{{submenu.label}}</h2>
 
-  <div class="opciones-grid">
-    <div *ngFor="let submenu of submenus; let i = index" class="grupo-opcion" [class.inicial]="!mostrarAnimacion[i]">
-      <div class="encabezado">{{ submenu.label }}</div>
+  <div class="opciones-grid" *ngFor="let child of submenu.children; let i = index">
+    <div class="grupo-opcion" [class.inicial]="!mostrarAnimacion[i]">
+      <div class="encabezado">{{ child.label }}</div>
+      <ul class="nivel-1">
+        <li *ngIf="child.children?.length" class="nivel-1-item">
+          <div class="nivel-label" (click)="toggleExpand(submenu.label, i)">
+            {{ submenu.label }}
+            <button  class="btn-expand">
+              {{ isExpanded(submenu.label, i) ? '−' : '+' }}
+            </button>
+          </div>
 
-      <!-- <ul class="lista">
-        <li *ngFor="let child of submenu.children">
-          <div>{{ child.label }}</div>
-
-          <ul *ngIf="child.children?.length" class="">
+          <ul *ngIf="child.children?.length && isExpanded(submenu.label, i)" class="nivel-2">
             <li *ngFor="let grandchild of child.children">
-              {{ grandchild.label }}
+              <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
             </li>
           </ul>
-
         </li>
-      </ul> -->
+      </ul>
+    </div>
+  </div>
+</div> -->
+<div class="contenedor-submenus">
+  <div class="opciones-container" *ngFor="let submenu of submenus; let i = index">
+    <h2>{{ submenu.label }}</h2>
+
+    <!-- <div class="grupo-opcion" *ngFor="let child of submenu.children; let j = index">
+      <div class="encabezado">{{ child.label }}</div>
       <ul class="nivel-1">
-  <li *ngFor="let child of submenu.children; let i = index" class="nivel-1-item">
-    <div class="nivel-label" (click)="toggleExpand(submenu.label, i)">
-      {{ child.label }}
-      <button *ngIf="child.children?.length" class="btn-expand">
-        {{ isExpanded(submenu.label, i) ? '−' : '+' }}
-      </button>
+        <li *ngIf="child.children?.length" class="nivel-1-item">
+          <div class="nivel-label" (click)="toggleExpand(submenu.label, j)">
+            {{ child.label }}
+            <button class="btn-expand">
+              {{ isExpanded(submenu.label, j) ? '−' : '+' }}
+            </button>
+          </div>
+
+          <ul *ngIf="isExpanded(submenu.label, j)" class="nivel-2">
+            <li *ngFor="let grandchild of child.children">
+              <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div> -->
+    <div class="grupo-opciones-horizontal">
+      <div class="grupo-opcion" *ngFor="let child of submenu.children; let j = index">
+        <div class="encabezado">{{ child.label }}</div>
+        <ul class="nivel-1">
+          <li *ngIf="child.children?.length" class="nivel-1-item">
+            <!-- <div *ngFor="let grandchild of child.children" class="nivel-label" (click)="toggleExpand(submenu.label, j)">
+              {{ grandchild.label }}
+              <button *ngIf="isExpanded(submenu.label, j)" class="btn-expand">
+                {{ isExpanded(grandchild.label, j) ? '−' : '+' }}
+              </button>
+            </div> -->
+            <div *ngFor="let grandchild of child.children; let k = index"
+              (click)="toggleExpand(submenu.label, j)">
+              <div class="nivel-label">{{ grandchild.label }}</div>
+              
+
+              <!-- <button *ngIf="grandchild.children?.length && isExpanded(submenu.label, j)" class="btn-expand">
+                {{ isExpanded(grandchild.label, j) ? '-' : '+' }}
+              </button>
+              <ul *ngIf="isExpanded(submenu.label, j)" class="nivel-2">
+                <li *ngFor="let gchild of grandchild.children">
+                  <div class="nivel-label nivel-3">{{ gchild.label }}</div>
+                </li>
+              </ul> -->
+              <ul  class="nivel-2">
+                <li *ngFor="let gchild of grandchild.children">
+                  <div class="nivel-label nivel-3">{{ gchild.label }}</div>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <ul *ngIf="child.children?.length && isExpanded(submenu.label, i)" class="nivel-2">
-      <li *ngFor="let grandchild of child.children">
-        <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
-      </li>
-    </ul>
-  </li>
-</ul>
+  </div>
+</div>
 
 
-      <!-- <ul class="nivel-1">
+
+<!-- <ul class="nivel-1">
         <li *ngFor="let child of submenu.children">
           <div class="nivel-label">{{ child.label }}</div>
-
           <ul *ngIf="child.children?.length" class="nivel-2">
             <li *ngFor="let grandchild of child.children">
               <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
@@ -53,12 +103,6 @@
           </ul>
         </li>
       </ul> -->
-
-    </div>
-  </div>
-</div>
-
-
 
 <!-- <div class="container" *ngIf="submenus?.length">
   <ul class="opciones-menu">

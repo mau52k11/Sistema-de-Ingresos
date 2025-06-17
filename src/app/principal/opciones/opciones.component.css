@@ -1,11 +1,13 @@
 .opciones-container {
   padding: 32px;
-  background: linear-gradient(145deg, #f0f4f8, #ffffff);
-  max-width: 95vw;
-  margin: 24px auto;
+  /* background: linear-gradient(145deg, #f0f4f8, #ffffff); */
   border-radius: 20px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   border: 1px solid #e2e8f0;
+  /* flex: 1 1 calc(33.333% - 34px); */
+  min-width: 600px;
+  /* max-width: calc(33.333% - 24px); */
+  align-self: flex-start;
 }
 
 .titulo {
@@ -22,23 +24,10 @@
   gap: 24px;
 }
 
-.grupo-opcion {
-  background-color: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-
-  transform: translateX(0);
-  opacity: 1;
-  transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.3s ease;
-}
-
 .grupo-opcion.inicial {
   transform: translateX(-50px);
   opacity: 0;
 }
-
 
 .grupo-opcion:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -74,22 +63,18 @@
 .lista li:hover {
   background-color: #ebf8ff;
   color: #2b6cb0;
-  /* background-color: #ffebeb; */
-  /* color: #b02b2b; */
 }
 
 @media (max-width: 768px) {
   .opciones-grid {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
-
   .opciones-container {
     padding: 24px 16px;
     margin: 24px 8px;
     border-radius: 12px;
   }
 }
-
 
 .nivel-1 {
   list-style: none;
@@ -98,7 +83,6 @@
 }
 
 .nivel-label {
-  background-color: #f7fafc;
   padding: 6px 10px;
   margin-bottom: 4px;
   border-radius: 6px;
@@ -112,10 +96,9 @@
   color: #2b6cb0;
 }
 
-/* Subniveles (nivel 2 o grandchildren) */
 .nivel-2 {
   list-style: none;
-  margin: 6px 0 10px 20px; /* sangría visual */
+  margin: 6px 0 10px 20px;
   padding-left: 16px;
   border-left: 2px dashed #cbd5e0;
 }
@@ -124,9 +107,7 @@
   margin-bottom: 6px;
 }
 
-/* Opcional: si quieres diferenciar los niveles aún más */
 .nivel-3 {
-  background-color: #edf2f7;
   font-size: 14px;
   margin-left: 8px;
 }
@@ -145,4 +126,52 @@
 
 .btn-expand:hover {
   color: #1a202c;
+}
+
+.contenedor-submenus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 992px) {
+  .contenedor-submenus {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .opciones-container {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
+
+.grupo-opciones-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  align-items: flex-start;
+}
+
+.grupo-opcion {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  min-width: 400px;
+  /* width: calc(33.333% - 8px);
+  flex: 0 0 calc(50% - 8px);  */
+  /* La altura de cada uno se mantiene independiente */
+  align-self: flex-start;
+}
+
+.grupo-opcion.tres-columnas {
+  width: calc(33.333% - 11px); /* Para 3 columnas */
+}
+
+@media (max-width: 768px) {
+  .grupo-opcion {
+    width: 100%;
+  }
 }

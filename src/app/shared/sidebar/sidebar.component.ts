@@ -42,13 +42,17 @@ export class SidebarComponent {
         {
           icon: 'fas fa-user custom-icon', label: 'Clasificadores y Catálogos', route: '/admin/cuentas-contables',
           children: [
-            { icon: 'fas fa-folder-open custom-icon', label: 'Catálogos Contables', route: '/catalogo/agrupador-cuentas-contables' },
             {
-              icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogo CONAC', route: '/catalogo/cuentas-contables',
+              icon: 'fas fa-folder-open custom-icon', label: 'Catálogos Contables', route: '/catalogo/agrupador-cuentas-contables',
               children: [
-                { icon: 'fas fa-folder-open custom-icon', label: 'Plan de cuenta', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogo de Cuentas Contables', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Consulta de Catálogo de Cuentas Contables', route: '/catalogo/cuentas-registro' }
+                {
+                  icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogo CONAC',
+                  children: [
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Plan de cuenta', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogo de Cuentas Contables', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Consulta de Catálogo de Cuentas Contables', route: '/catalogo/cuentas-registro' }
+                  ]
+                }
               ]
             },
             {
@@ -72,28 +76,34 @@ export class SidebarComponent {
                 { icon: 'fas fa-clipboard-list custom-icon', label: 'Agrupación de Línea de Póliza', route: '/catalogo/cuentas-registro' }
               ]
             },
-          ]
-
-        },
-        {
-          label: 'Configuración de Ingresos',
-          icon: 'folder',
-          children: [
             {
-              icon: 'fas fa-user custom-icon',
-              label: 'Clave de Ingresos',
-              children: [
-                { icon: 'fas fa-user custom-icon', label: 'Catálogo de Niveles', route: '/admin/cuentas-contables' },
-                { icon: 'fas fa-lock custom-icon', label: 'Registrar Claves de Ingresos', route: '/admin/ley-ingresos' },
-                { icon: 'fas fa-lock custom-icon', label: 'Autorizar Claves de Ingresos', route: '/admin/ley-ingresos' },
-                { icon: 'fas fa-lock custom-icon', label: 'Modificar Claves de Ingresos', route: '/admin/ley-ingresos' },
-                { icon: 'fas fa-lock custom-icon', label: 'Consultar Claves de Ingresos', route: '/admin/ley-ingresos' }
-              ]
+              icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Alta de Cuentas Bancarias', route: '/catalogo/cuentas-contables',
+            },
+            {
+              icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Padrón Contable', route: '/catalogo/cuentas-contables',
             },
           ]
+
         },
       ],
 
+    },
+    {
+      label: 'Configuración de Ingresos',
+      icon: 'folder',
+      children: [
+        {
+          icon: 'fas fa-user custom-icon',
+          label: 'Clave de Ingresos',
+          children: [
+            { icon: 'fas fa-user custom-icon', label: 'Catálogo de Niveles', route: '/admin/cuentas-contables' },
+            { icon: 'fas fa-lock custom-icon', label: 'Registrar Claves de Ingresos', route: '/admin/ley-ingresos' },
+            { icon: 'fas fa-lock custom-icon', label: 'Autorizar Claves de Ingresos', route: '/admin/ley-ingresos' },
+            { icon: 'fas fa-lock custom-icon', label: 'Modificar Claves de Ingresos', route: '/admin/ley-ingresos' },
+            { icon: 'fas fa-lock custom-icon', label: 'Consultar Claves de Ingresos', route: '/admin/ley-ingresos' }
+          ]
+        },
+      ]
     },
     {
       icon: 'event_available',
