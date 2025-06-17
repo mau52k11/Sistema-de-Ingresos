@@ -23,7 +23,7 @@ const routes: Routes = [
             // { path: 'opciones', component: OpcionesComponent},
             { path: 'comercios-censados', component: ComerciosCensadosComponent },
             { path: 'contabilidad', component: ContabilidadComponent },
-            { path: 'cuentas-contables', component: CuentasContablesComponent },
+            { path: 'ingresos-corrientes', component: CuentasContablesComponent },
             { path: 'cuestionarios', component: CuestionariosComponent },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'formularios', component: FormulariosComponent },

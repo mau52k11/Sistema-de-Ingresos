@@ -21,39 +21,41 @@ export class LayoutPageComponent {
   mostrarOpciones: boolean = false;
   showModulesGrid: boolean = false;
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
 
   onMenuItemSelected(item: MenuItem) {
-  this.menuSeleccionado = item;
-  this.selectedSubmenus = item.children || null;
+    this.menuSeleccionado = item;
+    this.selectedSubmenus = item.children || null;
 
-  // Si es dashboard, navegamos y ocultamos Opciones
-  if (item.route === '/dashboard') {
-    this.mostrarOpciones = false;
-    this.router.navigate([item.route]);
-  } else if (item.route === 'clasificaciones') {
-    this.mostrarOpciones = false;
-    // Para clasificaciones, navegamos pero SÍ mostramos opciones
-    this.router.navigate(['/clasificaciones']);
-  } else {
-    // Para otros, solo mostramos opciones y no navegamos
-    this.mostrarOpciones = true;
-  }
+    // Si es dashboard, navegamos y ocultamos Opciones
+    if (item.route === '/dashboard') {
+      this.mostrarOpciones = false;
+      this.router.navigate([item.route]);
+    } else if (item.route === 'clasificaciones') {
+      this.mostrarOpciones = false;
+      // Para clasificaciones, navegamos pero SÍ mostramos opciones
+      this.router.navigate(['/clasificaciones']);
+    } else {
+      // Para otros, solo mostramos opciones y no navegamos
+      this.mostrarOpciones = true;
+    }
   }
 
   menuSeleccionado: MenuItem | null = null;
 
-seleccionarMenu(menu: MenuItem) {
-  this.menuSeleccionado = menu;
-}
+  seleccionarMenu(menu: MenuItem) {
+    this.menuSeleccionado = menu;
+    console.log('navegando a :', this.menuSeleccionado.route);
+    this.router.navigate([this.menuSeleccionado.route]);
+  }
 
-onShowModulesGrid(): void {
+  onShowModulesGrid(): void {
     this.showModulesGrid = true;
   }
 
   onModuleSelected(module: ModuleItem): void {
     console.log('Módulo seleccionado:', module);
-    
+
     if (module.route) {
       this.router.navigate([module.route]);
     }

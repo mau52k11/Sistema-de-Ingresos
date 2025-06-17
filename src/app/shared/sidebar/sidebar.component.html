@@ -39,9 +39,16 @@
     <ul>
       <ng-container *ngFor="let item of menuItems">
         <li class="sidebar-menu-item" (click)="onMenuClick(item)">
-          <a class="sidebar-item" [title]="item.label">
+          <!-- <a class="sidebar-item" [title]="item.label">
+            <mat-icon class="custom-icon">{{item.icon}}</mat-icon>
+          </a> -->
+          <!-- <a class="sidebar-item" [matTooltip]="item.label" matTooltipPosition="right">
+            <img [src]="item.icon" [alt]="item.label" class="custom-icon-image" />
+          </a> -->
+          <a class="sidebar-item" [matTooltip]="item.label" matTooltipPosition="right">
             <mat-icon class="custom-icon">{{item.icon}}</mat-icon>
           </a>
+
         </li>
       </ng-container>
     </ul>

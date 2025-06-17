@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     CommonModule,
     RouterModule, // Importar RouterModule
     MatIconModule,
+    MatTooltipModule,
     MatIcon
   ],
   exports: [

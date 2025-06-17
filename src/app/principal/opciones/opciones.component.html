@@ -12,18 +12,48 @@
     <div *ngFor="let submenu of submenus; let i = index" class="grupo-opcion" [class.inicial]="!mostrarAnimacion[i]">
       <div class="encabezado">{{ submenu.label }}</div>
 
-      <ul class="lista">
+      <!-- <ul class="lista">
         <li *ngFor="let child of submenu.children">
           <div>{{ child.label }}</div>
 
-          <ul *ngIf="child.children?.length">
+          <ul *ngIf="child.children?.length" class="">
             <li *ngFor="let grandchild of child.children">
               {{ grandchild.label }}
             </li>
           </ul>
 
         </li>
-      </ul>
+      </ul> -->
+      <ul class="nivel-1">
+  <li *ngFor="let child of submenu.children; let i = index" class="nivel-1-item">
+    <div class="nivel-label" (click)="toggleExpand(submenu.label, i)">
+      {{ child.label }}
+      <button *ngIf="child.children?.length" class="btn-expand">
+        {{ isExpanded(submenu.label, i) ? '−' : '+' }}
+      </button>
+    </div>
+
+    <ul *ngIf="child.children?.length && isExpanded(submenu.label, i)" class="nivel-2">
+      <li *ngFor="let grandchild of child.children">
+        <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+      <!-- <ul class="nivel-1">
+        <li *ngFor="let child of submenu.children">
+          <div class="nivel-label">{{ child.label }}</div>
+
+          <ul *ngIf="child.children?.length" class="nivel-2">
+            <li *ngFor="let grandchild of child.children">
+              <div class="nivel-label nivel-3">{{ grandchild.label }}</div>
+            </li>
+          </ul>
+        </li>
+      </ul> -->
+
     </div>
   </div>
 </div>
