@@ -8,6 +8,7 @@ export interface MenuItem {
   children?: MenuItem[];
   isOpen?: boolean;
   route?: string;
+  isActive?: boolean;
 }
 
 export interface ModuleItem {
@@ -346,38 +347,59 @@ export class SidebarComponent {
     }
   ];
 
-  onMenuClick(item: MenuItem): void {
-    // Si el elemento tiene hijos, toggle el estado de expansión
-    if (item.children && item.children.length > 0) {
-      this.toggleMenuItem(item);
-    } else if (item.route) {
-      // Si es un elemento final con ruta, navegar
-      this.navigateToRoute(item);
-    }
-    
-    // Emitir evento para el componente padre
-    this.menuSelected.emit(item);
-  }
+  // onMenuClick(item: MenuItem): void {
+  //   if (item.children && item.children.length > 0) {
+  //     this.toggleMenuItem(item);
+  //   } else if (item.route) {
+  //     this.navigateToRoute(item);
+  //   }
 
-  /**
-   * Toggle del estado de expansión de un elemento del menú
-   */
+  //   this.menuSelected.emit(item);
+  // }
+
+  activeItem: MenuItem | null = null;
+
+clearActiveFlags(items: MenuItem[]) {
+  for (let item of items) {
+    item.isActive = false;
+    if (item.children) {
+      this.clearActiveFlags(item.children);
+    }
+  }
+}
+
+onMenuClick(item: MenuItem, event?: MouseEvent) {
+  const isLeaf = !item.children || item.children.length === 0;
+
+  // Detiene propagación para que no afecte padres
+  event?.stopPropagation();
+
+  // Limpia todos los activos
+  this.clearActiveFlags(this.menuItems);
+
+  // Si es hoja, activa este
+  if (isLeaf) {
+    item.isActive = true;
+    this.activeItem = item;
+
+    if (item.route) {
+      this.router.navigate([item.route]);
+    }
+  } else {
+    item.isOpen = !item.isOpen;
+  }
+}
+
+
+
   private toggleMenuItem(item: MenuItem): void {
-    
-    // Toggle del elemento actual
     item.isOpen = !item.isOpen;
   }
 
-  /**
-   * Cierra otros elementos del menú del mismo nivel
-   */
   private closeOtherMenuItems(currentItem: MenuItem): void {
     this.closeMenuItemsRecursive(this.menuItems, currentItem);
   }
 
-  /**
-   * Función recursiva para cerrar elementos del menú
-   */
   private closeMenuItemsRecursive(items: MenuItem[], currentItem: MenuItem): void {
     items.forEach(item => {
       if (item !== currentItem && item.isOpen) {
@@ -389,38 +411,25 @@ export class SidebarComponent {
     });
   }
 
-  /**
-   * Navega a una ruta específica
-   */
   private navigateToRoute(item: MenuItem): void {
     if (item.route) {
       this.router.navigate([item.route]);
       
-      // En móvil, cerrar el sidebar después de navegar
       if (window.innerWidth <= 768) {
         this.onLogoClick();
       }
     }
   }
 
-  /**
-   * Verifica si un elemento está activo (tiene la ruta actual)
-   */
   isMenuItemActive(item: MenuItem): boolean {
     if (!item.route) return false;
     return this.router.url === item.route;
   }
 
-  /**
-   * Inicializa el estado del menú basado en la ruta actual
-   */
   private initializeMenuState(): void {
     this.expandActiveMenuPath(this.menuItems);
   }
 
-  /**
-   * Expande el path del menú que contiene la ruta activa
-   */
   private expandActiveMenuPath(items: MenuItem[]): boolean {
     for (const item of items) {
       if (item.route === this.router.url) {
@@ -434,6 +443,15 @@ export class SidebarComponent {
     }
     return false;
   }
+
+  setActive(item: MenuItem, items: MenuItem[]) {
+  for (let i of items) {
+    i.isActive = false;
+    if (i.children) {
+      this.setActive(item, i.children);
+    }
+  }
+}
 
 
   onLogoClick(): void {

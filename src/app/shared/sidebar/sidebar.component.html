@@ -42,7 +42,7 @@
       <ng-container *ngFor="let item of menuItems; let i = index">
         <li class="sidebar-menu-item" [class.has-children]="item.children && item.children.length > 0">
           <a class="sidebar-item" 
-             [class.menu-item-active]="item.isOpen"
+             [class.menu-item-active]="item.isActive"
              [matTooltip]="isSidebarCollapsed ? item.label : ''" 
              matTooltipPosition="right"
              (click)="onMenuClick(item)">
@@ -62,7 +62,7 @@
                 [class.has-children]="child1.children && child1.children.length > 0">
               
               <a class="sidebar-item sidebar-item-level-1" 
-                 [class.menu-item-active]="child1.isOpen"
+                  [class.menu-item-active]="child1.isActive"
                  (click)="onMenuClick(child1)">
                 <mat-icon class="custom-icon custom-icon-small">{{ child1.icon }}</mat-icon>
                 <span class="sidebar-item-text">{{ child1.label }}</span>
@@ -80,7 +80,7 @@
                     [class.has-children]="child2.children && child2.children.length > 0">
                   
                   <a class="sidebar-item sidebar-item-level-2" 
-                     [class.menu-item-active]="child2.isOpen"
+                     [class.menu-item-active]="child2.isActive"
                      (click)="onMenuClick(child2)">
                     <mat-icon class="custom-icon custom-icon-smaller">{{ child2.icon }}</mat-icon>
                     <span class="sidebar-item-text">{{ child2.label }}</span>
@@ -98,7 +98,7 @@
                         [class.has-children]="child3.children && child3.children.length > 0">
                       
                       <a class="sidebar-item sidebar-item-level-3" 
-                         [class.menu-item-active]="child3.isOpen"
+                         [class.menu-item-active]="child3.isActive"
                          (click)="onMenuClick(child3)">
                         <mat-icon class="custom-icon custom-icon-smallest">{{ child3.icon }}</mat-icon>
                         <span class="sidebar-item-text">{{ child3.label }}</span>
@@ -112,11 +112,18 @@
                           *ngIf="child3.children && child3.children.length > 0 && child3.isOpen"
                           [@slideInOut]>
                         <li *ngFor="let child4 of child3.children" class="sidebar-menu-item">
-                          <a class="sidebar-item sidebar-item-level-4" 
+                          <!-- <a class="sidebar-item sidebar-item-level-4"  [class.menu-item-active]="child3.isActive"
                              (click)="onMenuClick(child4)">
                             <mat-icon class="custom-icon custom-icon-tiny">{{ child4.icon }}</mat-icon>
                             <span class="sidebar-item-text">{{ child4.label }}</span>
-                          </a>
+                          </a> -->
+                          <a class="sidebar-item sidebar-item-level-4"
+   [class.menu-item-active]="child4.isActive"
+   (click)="onMenuClick(child4, $event)">
+   <mat-icon class="custom-icon custom-icon-tiny">{{ child4.icon }}</mat-icon>
+   <span class="sidebar-item-text">{{ child4.label }}</span>
+</a>
+
                         </li>
                       </ul>
 
