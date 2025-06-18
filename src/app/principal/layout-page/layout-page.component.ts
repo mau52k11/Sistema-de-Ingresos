@@ -26,17 +26,13 @@ export class LayoutPageComponent {
   onMenuItemSelected(item: MenuItem) {
     this.menuSeleccionado = item;
     this.selectedSubmenus = item.children || null;
-
-    // Si es dashboard, navegamos y ocultamos Opciones
     if (item.route === '/dashboard') {
       this.mostrarOpciones = false;
       this.router.navigate([item.route]);
     } else if (item.route === 'clasificaciones') {
       this.mostrarOpciones = false;
-      // Para clasificaciones, navegamos pero SÍ mostramos opciones
       this.router.navigate(['/clasificaciones']);
     } else {
-      // Para otros, solo mostramos opciones y no navegamos
       this.mostrarOpciones = true;
     }
   }

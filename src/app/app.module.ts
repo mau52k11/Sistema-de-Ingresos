@@ -13,7 +13,6 @@ import { GestionarTemasComponent } from './principal/gestionar-temas/gestionar-t
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { CuentasContablesComponent } from './principal/cuentas-contables/cuentas-contables.component';
 import { LeyIngresosComponent } from './principal/ley-ingresos/ley-ingresos.component';
 import { CuestionariosComponent } from './principal/cuestionarios/cuestionarios.component';
 import { FormulariosComponent } from './principal/formularios/formularios.component';

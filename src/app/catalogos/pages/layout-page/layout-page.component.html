@@ -1,0 +1,17 @@
+<div class="main-container"  [class.modules-active]="showModulesGrid">
+  <div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
+    <app-sidebar (menuSelected)="onMenuItemSelected($event)" (logoClicked)="onShowModulesGrid()" [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
+  </div>
+  <app-header></app-header>
+   <div class="content">
+    <!-- <app-cuentas-contables></app-cuentas-contables> -->
+
+    <!-- <app-dashboard *ngIf="menuSeleccionado?.label === 'Dashboard'"></app-dashboard> -->
+    <app-clasificaciones *ngIf="menuSeleccionado?.label === 'Categorías y Catálogos'"></app-clasificaciones>
+
+    <router-outlet *ngIf="!mostrarOpciones"></router-outlet>
+  </div>
+
+   <app-opciones-header  *ngIf="showModulesGrid" (moduleSelected)="onModuleSelected($event)" (closeGrid)="onCloseModulesGrid()"></app-opciones-header>
+
+</div>

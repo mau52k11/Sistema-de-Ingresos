@@ -1,0 +1,319 @@
+<!-- plan-cuentas.component.html -->
+<div class="plan-cuentas-container">
+    <div class="header">
+        <!-- <h1 class="main-title">Plan de Cuentas</h1> -->
+        <div class="breadcrumb-item">
+            <span class="breadcrumb-text">Administrador Contable del Ingreso</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Clasificadores y Catálogos</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Catálogos Contables</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Catálogo CONAC</span>
+        </div>
+        <div class="breadcrumb-item active">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Plan de Cuentas</span>
+        </div>
+    </div>
+    <div class="header-section">
+
+        <!-- <div class="header-content">
+            <div class="breadcrumb">
+                <span class="breadcrumb-item">Administrador Contable del Ingreso</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">Clasificadores y Catálogos</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">Catálogos Contables</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item">Catálogo CONAC</span>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-item active">Plan de Cuentas</span>
+            </div>
+            <h1 class="main-title">Plan de Cuentas</h1>
+        </div> -->
+
+        <div class="header-actions">
+            <button class="btn btn-outline" (click)="importAccounts()">
+                📥 Importar
+            </button>
+            <button class="btn btn-outline" (click)="exportAccounts()">
+                📤 Exportar
+            </button>
+            <button class="btn btn-primary" (click)="openAddModal()">
+                ➕ Nueva Cuenta
+            </button>
+        </div>
+    </div>
+
+    <!-- Resumen Cards -->
+    <div class="stats-grid">
+        <div class="stat-card" *ngFor="let summary of accountSummaries" [style.--card-color]="summary.color">
+            <div class="card-header">
+                <div class="stat-icon revenue">{{ summary.icon }}</div>
+                <!-- <div class="card-icon orders">{{ summary.icon }}</div> -->
+                <div class="card-info">
+                    <h3 class="card-title">{{ summary.type }}</h3>
+                    <p class="card-value">{{ formatCurrency(summary.total) }}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="account-count">{{ summary.count }} cuentas</span>
+                <span class="change-indicator" [class.positive]="summary.change > 0"
+                    [class.negative]="summary.change < 0">
+                    {{ summary.change > 0 ? '+' : '' }}{{ summary.change }}%
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros y Búsqueda -->
+    <div class="filters-section">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Buscar por código o nombre..."
+                    [(ngModel)]="searchTerm">
+            </div>
+        </div>
+
+        <div class="filter-container">
+            <select class="filter-select" [(ngModel)]="selectedType">
+                <option *ngFor="let type of accountTypes" [value]="type">
+                    {{ type }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Tabla de Cuentas -->
+    <div class="accounts-table-container">
+        <div class="table-header">
+            <div class="table-title">
+                <h2>Estructura de Cuentas</h2>
+                <span class="results-count">
+                    {{ filteredAccounts.length }} resultados
+                </span>
+            </div>
+        </div>
+
+        <div class="accounts-table">
+            <div class="table-header-row">
+                <div class="th th-code">Código</div>
+                <div class="th th-name">Nombre de la Cuenta</div>
+                <div class="th th-type">Tipo</div>
+                <div class="th th-balance">Saldo</div>
+                <div class="th th-actions">Acciones</div>
+            </div>
+
+            <div class="table-body">
+                <ng-container *ngFor="let account of filteredAccounts">
+                    <div class="account-row" [class.selected]="selectedAccount?.id === account.id"
+                        [class.expanded]="account.expanded" [attr.data-level]="account.level">
+
+                        <div class="td td-code" (click)="selectAccount(account)">
+                            <div class="code-wrapper" [style.margin-left.px]="(account.level - 1) * 20">
+                                <button *ngIf="account.hasChildren" class="expand-btn"
+                                    (click)="toggleAccount(account); $event.stopPropagation()">
+                                    <span class="expand-icon" [class.rotated]="account.expanded">▶</span>
+                                </button>
+                                <span class="account-code">{{ account.code }}</span>
+                            </div>
+                        </div>
+
+                        <div class="td td-name" (click)="selectAccount(account)">
+                            <span class="account-name" [style.font-weight]="account.level <= 2 ? 'bold' : 'normal'">
+                                {{ account.name }}
+                            </span>
+                        </div>
+
+                        <div class="td td-type">
+                            <span class="type-badge" [style.background-color]="getAccountTypeColor(account.type)">
+                                {{ account.type }}
+                            </span>
+                        </div>
+
+                        <div class="td td-balance">
+                            <span class="balance-amount" [class.positive]="account.balance > 0"
+                                [class.negative]="account.balance < 0">
+                                {{ formatCurrency(account.balance) }}
+                            </span>
+                        </div>
+
+                        <div class="td td-actions">
+                            <div class="action-buttons">
+                                <button class="action-btn edit" (click)="editAccount(account)">
+                                    ✏️
+                                </button>
+                                <button class="action-btn delete" (click)="deleteAccount(account)">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cuentas hijas -->
+                    <ng-container *ngIf="account.expanded && account.children">
+                        <ng-container *ngFor="let child of account.children">
+                            <div class="account-row child-row" [class.selected]="selectedAccount?.id === child.id"
+                                [class.expanded]="child.expanded" [attr.data-level]="child.level">
+
+                                <div class="td td-code" (click)="selectAccount(child)">
+                                    <div class="code-wrapper" [style.margin-left.px]="(child.level - 1) * 20">
+                                        <button *ngIf="child.hasChildren" class="expand-btn"
+                                            (click)="toggleAccount(child); $event.stopPropagation()">
+                                            <span class="expand-icon" [class.rotated]="child.expanded">▶</span>
+                                        </button>
+                                        <span class="account-code">{{ child.code }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="td td-name" (click)="selectAccount(child)">
+                                    <span class="account-name"
+                                        [style.font-weight]="child.level <= 2 ? 'bold' : 'normal'">
+                                        {{ child.name }}
+                                    </span>
+                                </div>
+
+                                <div class="td td-type">
+                                    <span class="type-badge" [style.background-color]="getAccountTypeColor(child.type)">
+                                        {{ child.type }}
+                                    </span>
+                                </div>
+
+                                <div class="td td-balance">
+                                    <span class="balance-amount" [class.positive]="child.balance > 0"
+                                        [class.negative]="child.balance < 0">
+                                        {{ formatCurrency(child.balance) }}
+                                    </span>
+                                </div>
+
+                                <div class="td td-actions">
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit" (click)="editAccount(child)">
+                                            ✏️
+                                        </button>
+                                        <button class="action-btn delete" (click)="deleteAccount(child)">
+                                            🗑️
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cuentas nietas -->
+                            <ng-container *ngIf="child.expanded && child.children">
+                                <div class="account-row grandchild-row" *ngFor="let grandchild of child.children"
+                                    [class.selected]="selectedAccount?.id === grandchild.id"
+                                    [attr.data-level]="grandchild.level">
+
+                                    <div class="td td-code" (click)="selectAccount(grandchild)">
+                                        <div class="code-wrapper" [style.margin-left.px]="(grandchild.level - 1) * 20">
+                                            <span class="account-code">{{ grandchild.code }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="td td-name" (click)="selectAccount(grandchild)">
+                                        <span class="account-name">{{ grandchild.name }}</span>
+                                    </div>
+
+                                    <div class="td td-type">
+                                        <span class="type-badge"
+                                            [style.background-color]="getAccountTypeColor(grandchild.type)">
+                                            {{ grandchild.type }}
+                                        </span>
+                                    </div>
+
+                                    <div class="td td-balance">
+                                        <span class="balance-amount" [class.positive]="grandchild.balance > 0"
+                                            [class.negative]="grandchild.balance < 0">
+                                            {{ formatCurrency(grandchild.balance) }}
+                                        </span>
+                                    </div>
+
+                                    <div class="td td-actions">
+                                        <div class="action-buttons">
+                                            <button class="action-btn edit" (click)="editAccount(grandchild)">
+                                                ✏️
+                                            </button>
+                                            <button class="action-btn delete" (click)="deleteAccount(grandchild)">
+                                                🗑️
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Agregar/Editar Cuenta -->
+<div class="modal-overlay" *ngIf="showAddModal" (click)="closeAddModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>{{ selectedAccount ? 'Editar Cuenta' : 'Nueva Cuenta' }}</h2>
+            <button class="close-btn" (click)="closeAddModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="accountCode">Código de Cuenta</label>
+                <input type="text" id="accountCode" class="form-input" [(ngModel)]="newAccount.code"
+                    placeholder="Ej: 1105">
+            </div>
+
+            <div class="form-group">
+                <label for="accountName">Nombre de la Cuenta</label>
+                <input type="text" id="accountName" class="form-input" [(ngModel)]="newAccount.name"
+                    placeholder="Ej: Cuentas por Cobrar">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="accountType">Tipo de Cuenta</label>
+                    <select id="accountType" class="form-select" [(ngModel)]="newAccount.type">
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="PASIVO">PASIVO</option>
+                        <option value="PATRIMONIO">PATRIMONIO</option>
+                        <option value="INGRESO">INGRESO</option>
+                        <option value="GASTO">GASTO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="accountLevel">Nivel</label>
+                    <select id="accountLevel" class="form-select" [(ngModel)]="newAccount.level">
+                        <option value="1">1 - Principal</option>
+                        <option value="2">2 - Grupo</option>
+                        <option value="3">3 - Cuenta</option>
+                        <option value="4">4 - Subcuenta</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="accountBalance">Saldo Inicial</label>
+                <input type="number" id="accountBalance" class="form-input" [(ngModel)]="newAccount.balance"
+                    placeholder="0.00">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-outline" (click)="closeAddModal()">
+                Cancelar
+            </button>
+            <button class="btn btn-primary" (click)="saveAccount()">
+                {{ selectedAccount ? 'Actualizar' : 'Guardar' }}
+            </button>
+        </div>
+    </div>
+</div>

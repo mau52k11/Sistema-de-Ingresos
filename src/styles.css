@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.breadcrumb-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-color: #ccc;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 30px 10px 15px;
+    margin-right: 0;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%, 10px 50%);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.breadcrumb-item.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.breadcrumb-item.active .icon {
+    color: #155724;
+}
+
+.breadcrumb-text {
+    white-space: nowrap;
+}
+
+.icon {
+    margin-right: 8px;
+}

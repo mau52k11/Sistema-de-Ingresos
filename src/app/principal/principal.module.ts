@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { CensoComponent } from './censo/censo.component';
 import { ComerciosCensadosComponent } from './comercios-censados/comercios-censados.component';
 import { ContabilidadComponent } from './contabilidad/contabilidad.component';
-import { CuentasContablesComponent } from './cuentas-contables/cuentas-contables.component';
 import { CuestionariosComponent } from './cuestionarios/cuestionarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormulariosComponent } from './formularios/formularios.component';
@@ -22,15 +21,12 @@ import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { NgChartsModule } from 'ng2-charts';
 import { OpcionesComponent } from './opciones/opciones.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { OpcionesHeaderComponent } from './opciones-header/opciones-header.component';
-import { ClasificacionesComponent } from './clasificaciones/clasificaciones.component';
 
 @NgModule({
   declarations: [
     CensoComponent,
     ComerciosCensadosComponent,
     ContabilidadComponent,
-    CuentasContablesComponent,
     CuestionariosComponent,
     DashboardComponent,
     FormulariosComponent,
@@ -43,8 +39,6 @@ import { ClasificacionesComponent } from './clasificaciones/clasificaciones.comp
     SeguridadComponent,
     SoporteComponent,
     OpcionesComponent,
-    OpcionesHeaderComponent,
-    ClasificacionesComponent,
   ],
   imports: [
     CommonModule,

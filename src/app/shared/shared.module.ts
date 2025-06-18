@@ -6,11 +6,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ClasificacionesComponent } from './clasificaciones/clasificaciones.component';
+import { OpcionesHeaderComponent } from './opciones-header/opciones-header.component';
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    ClasificacionesComponent,
+    OpcionesHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     SidebarComponent,
     HeaderComponent,
     MatIconModule,
-    MatIcon
+    MatIcon,
+    ClasificacionesComponent,
+    OpcionesHeaderComponent
   ]
 })
 export class SharedModule { }

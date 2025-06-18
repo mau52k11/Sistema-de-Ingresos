@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ComerciosCensadosComponent } from './comercios-censados/comercios-censados.component';
 import { ContabilidadComponent } from './contabilidad/contabilidad.component';
-import { CuentasContablesComponent } from './cuentas-contables/cuentas-contables.component';
 import { CuestionariosComponent } from './cuestionarios/cuestionarios.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormulariosComponent } from './formularios/formularios.component';
@@ -14,7 +13,6 @@ import { SeguridadComponent } from './seguridad/seguridad.component';
 import { SoporteComponent } from './soporte/soporte.component';
 import { LayoutPageComponent } from './layout-page/layout-page.component';
 import { OpcionesComponent } from './opciones/opciones.component';
-import { ClasificacionesComponent } from './clasificaciones/clasificaciones.component';
 
 const routes: Routes = [
     {
@@ -23,7 +21,6 @@ const routes: Routes = [
             // { path: 'opciones', component: OpcionesComponent},
             { path: 'comercios-censados', component: ComerciosCensadosComponent },
             { path: 'contabilidad', component: ContabilidadComponent },
-            { path: 'ingresos-corrientes', component: CuentasContablesComponent },
             { path: 'cuestionarios', component: CuestionariosComponent },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'formularios', component: FormulariosComponent },
@@ -33,7 +30,6 @@ const routes: Routes = [
             { path: 'reporteria', component: ReporteriaComponent },
             { path: 'seguridad', component: SeguridadComponent },
             { path: 'soporte', component: SoporteComponent },
-            { path: 'clasificaciones', component: ClasificacionesComponent}
         ],
     }
 ];
