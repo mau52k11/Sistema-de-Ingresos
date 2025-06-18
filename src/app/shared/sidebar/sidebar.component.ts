@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export interface MenuItem {
   icon: string;
@@ -20,12 +21,24 @@ export interface ModuleItem {
   selector: 'app-sidebar',
   standalone: false,
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({ height: '0', opacity: 0 }),
+        animate('300ms ease-in', style({ height: '*', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ height: '0', opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class SidebarComponent {
 
   @Output() menuSelected = new EventEmitter<MenuItem>();
   @Output() logoClicked = new EventEmitter<void>();
+   @Input() isSidebarCollapsed: boolean = true;
 
   constructor(private router: Router) { }
 
@@ -52,30 +65,51 @@ export class SidebarComponent {
                     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogo de Cuentas Contables', route: '/catalogo/cuentas-contables' },
                     { icon: 'fas fa-clipboard-list custom-icon', label: 'Consulta de Catálogo de Cuentas Contables', route: '/catalogo/cuentas-registro' }
                   ]
-                }
+                },
+                {
+                  icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogos de Apoyo', route: '/catalogo/cuentas-contables',
+                  children: [
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Estructura de Cuentas', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Tipo de Periodo', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Póliza', route: '/catalogo/cuentas-registro' },
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Origen de Póliza', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Estatus de Póliza', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Momento Contable', route: '/catalogo/cuentas-registro' },
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Tipo de Vinculación', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación de Póliza', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Fuente', route: '/catalogo/cuentas-registro' },
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Grupo de Unidades Responsables', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Responsables', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Ejecutoras', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Interno', route: '/catalogo/cuentas-registro' },
+                    { icon: 'fas fa-folder-open custom-icon', label: 'Subtipo de Documento Interno', route: '/catalogo/agrupador-cuentas-contables' },
+                    { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación del Documento Fuente', route: '/catalogo/cuentas-contables' },
+                    { icon: 'fas fa-clipboard-list custom-icon', label: 'Agrupación de Línea de Póliza', route: '/catalogo/cuentas-registro' }
+                  ]
+                },
               ]
             },
-            {
-              icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogos de Apoyo', route: '/catalogo/cuentas-contables',
-              children: [
-                { icon: 'fas fa-folder-open custom-icon', label: 'Estructura de Cuentas', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Tipo de Periodo', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Póliza', route: '/catalogo/cuentas-registro' },
-                { icon: 'fas fa-folder-open custom-icon', label: 'Origen de Póliza', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Estatus de Póliza', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Momento Contable', route: '/catalogo/cuentas-registro' },
-                { icon: 'fas fa-folder-open custom-icon', label: 'Tipo de Vinculación', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación de Póliza', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Fuente', route: '/catalogo/cuentas-registro' },
-                { icon: 'fas fa-folder-open custom-icon', label: 'Grupo de Unidades Responsables', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Responsables', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Ejecutoras', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Interno', route: '/catalogo/cuentas-registro' },
-                { icon: 'fas fa-folder-open custom-icon', label: 'Subtipo de Documento Interno', route: '/catalogo/agrupador-cuentas-contables' },
-                { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación del Documento Fuente', route: '/catalogo/cuentas-contables' },
-                { icon: 'fas fa-clipboard-list custom-icon', label: 'Agrupación de Línea de Póliza', route: '/catalogo/cuentas-registro' }
-              ]
-            },
+            // {
+            //   icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Catálogos de Apoyo', route: '/catalogo/cuentas-contables',
+            //   children: [
+            //     { icon: 'fas fa-folder-open custom-icon', label: 'Estructura de Cuentas', route: '/catalogo/agrupador-cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Tipo de Periodo', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Póliza', route: '/catalogo/cuentas-registro' },
+            //     { icon: 'fas fa-folder-open custom-icon', label: 'Origen de Póliza', route: '/catalogo/agrupador-cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Estatus de Póliza', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-clipboard-list custom-icon', label: 'Momento Contable', route: '/catalogo/cuentas-registro' },
+            //     { icon: 'fas fa-folder-open custom-icon', label: 'Tipo de Vinculación', route: '/catalogo/agrupador-cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación de Póliza', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Fuente', route: '/catalogo/cuentas-registro' },
+            //     { icon: 'fas fa-folder-open custom-icon', label: 'Grupo de Unidades Responsables', route: '/catalogo/agrupador-cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Responsables', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Unidades Ejecutoras', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-clipboard-list custom-icon', label: 'Tipo de Documento Interno', route: '/catalogo/cuentas-registro' },
+            //     { icon: 'fas fa-folder-open custom-icon', label: 'Subtipo de Documento Interno', route: '/catalogo/agrupador-cuentas-contables' },
+            //     { icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Agrupación del Documento Fuente', route: '/catalogo/cuentas-contables' },
+            //     { icon: 'fas fa-clipboard-list custom-icon', label: 'Agrupación de Línea de Póliza', route: '/catalogo/cuentas-registro' }
+            //   ]
+            // },
             {
               icon: 'fas fa-file-invoice-dollar custom-icon', label: 'Alta de Cuentas Bancarias', route: '/catalogo/cuentas-contables',
             },
@@ -312,17 +346,103 @@ export class SidebarComponent {
     }
   ];
 
-  onMenuClick(item: MenuItem) {
+  onMenuClick(item: MenuItem): void {
+    // Si el elemento tiene hijos, toggle el estado de expansión
+    if (item.children && item.children.length > 0) {
+      this.toggleMenuItem(item);
+    } else if (item.route) {
+      // Si es un elemento final con ruta, navegar
+      this.navigateToRoute(item);
+    }
+    
+    // Emitir evento para el componente padre
     this.menuSelected.emit(item);
+  }
 
+  /**
+   * Toggle del estado de expansión de un elemento del menú
+   */
+  private toggleMenuItem(item: MenuItem): void {
+    
+    // Toggle del elemento actual
+    item.isOpen = !item.isOpen;
+  }
+
+  /**
+   * Cierra otros elementos del menú del mismo nivel
+   */
+  private closeOtherMenuItems(currentItem: MenuItem): void {
+    this.closeMenuItemsRecursive(this.menuItems, currentItem);
+  }
+
+  /**
+   * Función recursiva para cerrar elementos del menú
+   */
+  private closeMenuItemsRecursive(items: MenuItem[], currentItem: MenuItem): void {
+    items.forEach(item => {
+      if (item !== currentItem && item.isOpen) {
+        item.isOpen = false;
+      }
+      if (item.children) {
+        this.closeMenuItemsRecursive(item.children, currentItem);
+      }
+    });
+  }
+
+  /**
+   * Navega a una ruta específica
+   */
+  private navigateToRoute(item: MenuItem): void {
     if (item.route) {
-      console.log('Redirigiendo a:', item.route);
       this.router.navigate([item.route]);
+      
+      // En móvil, cerrar el sidebar después de navegar
+      if (window.innerWidth <= 768) {
+        this.onLogoClick();
+      }
     }
   }
+
+  /**
+   * Verifica si un elemento está activo (tiene la ruta actual)
+   */
+  isMenuItemActive(item: MenuItem): boolean {
+    if (!item.route) return false;
+    return this.router.url === item.route;
+  }
+
+  /**
+   * Inicializa el estado del menú basado en la ruta actual
+   */
+  private initializeMenuState(): void {
+    this.expandActiveMenuPath(this.menuItems);
+  }
+
+  /**
+   * Expande el path del menú que contiene la ruta activa
+   */
+  private expandActiveMenuPath(items: MenuItem[]): boolean {
+    for (const item of items) {
+      if (item.route === this.router.url) {
+        return true;
+      }
+      
+      if (item.children && this.expandActiveMenuPath(item.children)) {
+        item.isOpen = true;
+        return true;
+      }
+    }
+    return false;
+  }
+
 
   onLogoClick(): void {
     this.logoClicked.emit();
   }
+
+   toggleItem(item: MenuItem) {
+    item.isOpen = !item.isOpen;
+  }
+
 
 }

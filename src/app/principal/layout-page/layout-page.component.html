@@ -1,11 +1,11 @@
 <div class="main-container"  [class.modules-active]="showModulesGrid">
-  <!-- <div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
-    <app-sidebar [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
-  </div> -->
-
-  <div>
-    <app-sidebar (menuSelected)="onMenuItemSelected($event)" (logoClicked)="onShowModulesGrid()"></app-sidebar>
+  <div (mouseenter)="onMouseEnterSidebar()" (mouseleave)="onMouseLeaveSidebar()">
+    <app-sidebar (menuSelected)="onMenuItemSelected($event)" (logoClicked)="onShowModulesGrid()" [isSidebarCollapsed]="isSidebarCollapsed"></app-sidebar>
   </div>
+
+  <!-- <div>
+    <app-sidebar (menuSelected)="onMenuItemSelected($event)" (logoClicked)="onShowModulesGrid()"></app-sidebar>
+  </div> -->
   <app-header></app-header>
    <div class="content">
     <!-- Mover aquí -->

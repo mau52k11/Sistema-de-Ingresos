@@ -9,10 +9,10 @@
   transition: margin-left 0.3s ease;
 }
 /
+ */
 .content.sidebar-collapsed {
   margin-left: 75px;
-} */
-
+}
 .main-container {
   position: relative;
   /* width: 100%;

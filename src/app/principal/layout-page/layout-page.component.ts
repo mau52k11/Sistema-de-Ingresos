@@ -65,17 +65,17 @@ export class LayoutPageComponent {
   onCloseModulesGrid(): void {
     this.showModulesGrid = false;
   }
-  // isSidebarCollapsed = true;
-  // private collapseTimeout: any;
+  isSidebarCollapsed = true;
+  private collapseTimeout: any;
 
-  // onMouseEnterSidebar() {
-  //   clearTimeout(this.collapseTimeout);
-  //   this.isSidebarCollapsed = false;
-  // }
+  onMouseEnterSidebar() {
+    clearTimeout(this.collapseTimeout);
+    this.isSidebarCollapsed = false;
+  }
 
-  // onMouseLeaveSidebar() {
-  //   this.collapseTimeout = setTimeout(() => {
-  //     this.isSidebarCollapsed = true;
-  //   }, 300);
-  // }
+  onMouseLeaveSidebar() {
+    this.collapseTimeout = setTimeout(() => {
+      this.isSidebarCollapsed = true;
+    }, 300);
+  }
 }
