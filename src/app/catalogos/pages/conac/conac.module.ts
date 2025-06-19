@@ -5,6 +5,7 @@ import { ConacRoutingModule } from "./conac-routing.module";
 import { PlanCuentaComponent } from "./plan-cuenta/plan-cuenta.component";
 import { CuentasContablesComponent } from "./cuentas-contables/cuentas-contables.component";
 import { ConsultasCuentasContablesComponent } from "./consultas-cuentas-contables/consultas-cuentas-contables.component";
+import { SharedModule } from "../../../shared/shared.module";
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { ConsultasCuentasContablesComponent } from "./consultas-cuentas-contable
     imports: [
         CommonModule,
         FormsModule,
+        SharedModule,
         ReactiveFormsModule,
         ConacRoutingModule
     ]

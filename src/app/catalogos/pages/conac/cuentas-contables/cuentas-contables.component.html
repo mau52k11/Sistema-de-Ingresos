@@ -1,1 +1,257 @@
-<p>cuentas-contables works!</p>
+<div class="cuentas-container">
+    <div class="header">
+        <!-- <h1 class="main-title">Plan de Cuentas</h1> -->
+        <div class="breadcrumb-item">
+            <span class="breadcrumb-text">Administrador Contable del Ingreso</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Clasificadores y Catálogos</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Catálogos Contables</span>
+        </div>
+        <div class="breadcrumb-item">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Catálogo CONAC</span>
+        </div>
+        <div class="breadcrumb-item active">
+            <span class="icon"></span>
+            <span class="breadcrumb-text">Catálogo de Cuentas Contables</span>
+        </div>
+    </div>
+
+    <div class="header-section">
+        <div class="header-content">
+            <div class="header-actions">
+                <button class="btn btn-outline" (click)="importData()">
+                    <i class="icon-upload"></i>
+                    📥 Importar
+                </button>
+                <button class="btn btn-outline" (click)="exportData()">
+                    <i class="icon-download"></i>
+                    📥 Exportar
+                </button>
+                <button class="btn btn-primary" (click)="openAddModal()">
+                    <i class="fas fa-plus"></i>
+                    Nueva Cuenta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-section">
+        <div class="controls-content">
+            <div class="search-and-filters">
+                <div class="search-box">
+                    <i class="icon-search"></i>
+                    <input type="text" placeholder="Buscar por código, referencia o nombre..." [(ngModel)]="searchTerm"
+                        (input)="onSearchChange()" class="search-input">
+                </div>
+                <button class="btn btn-filter" [class.active]="showFilters" (click)="showFilters = !showFilters">
+                    <i class="icon-filter"></i>
+                    Filtros
+                </button>
+            </div>
+
+            <div class="controls-info">
+                <span class="results-count">
+                    {{filteredAccounts.length}} de {{accounts.length}} cuentas
+                </span>
+                <select class="items-per-page" [(ngModel)]="itemsPerPage" (change)="applyFilters()">
+                    <option value="5">5 por página</option>
+                    <option value="10">10 por página</option>
+                    <option value="25">25 por página</option>
+                    <option value="50">50 por página</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Filters Panel -->
+        <div class="filters-panel" *ngIf="showFilters">
+            <div class="filters-content">
+                <div class="filter-group">
+                    <label>Tipo de Cuenta:</label>
+                    <select [(ngModel)]="filterType" (change)="applyFilters()">
+                        <option value="">Todos los tipos</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Pasivo">Pasivo</option>
+                        <option value="Patrimonio">Patrimonio</option>
+                        <option value="Ingresos">Ingresos</option>
+                        <option value="Gastos">Gastos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Estado:</label>
+                    <select [(ngModel)]="filterStatus" (change)="applyFilters()">
+                        <option value="">Todos los estados</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <button class="btn btn-clear" (click)="filterType=''; filterStatus=''; applyFilters()">
+                    Limpiar Filtros
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-section">
+        <div class="table-container">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th class="checkbox-col">
+                            <input type="checkbox" [checked]="isAllSelected()" (change)="toggleSelectAll($event)">
+                        </th>
+                        <th>Código</th>
+                        <th>Referencia</th>
+                        <th>Nombre de la Cuenta</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th class="actions-col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let account of paginatedAccounts" [class.selected]="isSelected(account.id)">
+                        <td class="checkbox-col">
+                            <input type="checkbox" [checked]="isSelected(account.id)"
+                                (change)="toggleSelectRow(account.id, $event)">
+                        </td>
+                        <td class="code-col">
+                            <span class="code-badge">{{account.code}}</span>
+                        </td>
+                        <td>{{account.reference}}</td>
+                        <td class="name-col">
+                            <span class="account-name">{{account.name}}</span>
+                        </td>
+                        <td>
+                            <span class="type-badge" [ngClass]="getTypeClass(account.type)">
+                                {{account.type}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="status-badge" [ngClass]="getStatusClass(account.status)">
+                                {{account.status}}
+                            </span>
+                        </td>
+                        <td class="actions-col">
+                            <div class="action-buttons">
+                                <!-- <button class="btn-action btn-view" (click)="viewAccount(account)" title="Ver detalles">
+                                    <mat-icon>home</mat-icon>
+                                </button> -->
+                                <button class="btn-action btn-view" title="Ver">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-action btn-edit" (click)="editAccount(account)" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action btn-delete" (click)="deleteAccount(account)" title="Eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Empty State -->
+            <div class="empty-state" *ngIf="filteredAccounts.length === 0">
+                <div class="empty-content">
+                    <i class="icon-search-empty"></i>
+                    <h3>No se encontraron cuentas</h3>
+                    <p>Intenta ajustar los filtros de búsqueda o crear una nueva cuenta.</p>
+                    <button class="btn btn-primary" (click)="openAddModal()">
+                        <i class="icon-plus"></i>
+                        Crear Primera Cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-section" *ngIf="totalPages > 1">
+            <div class="pagination-info">
+                Mostrando {{(currentPage - 1) * itemsPerPage + 1}} -
+                {{Math.min(currentPage * itemsPerPage, filteredAccounts.length)}}
+                de {{filteredAccounts.length}} resultados
+            </div>
+            <div class="pagination-controls">
+                <button class="btn-page" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)">
+                    Anterior
+                </button>
+
+                <button *ngFor="let page of [].constructor(totalPages); let i = index" class="btn-page"
+                    [class.active]="currentPage === i + 1" (click)="changePage(i + 1)">
+                    {{i + 1}}
+                </button>
+
+                <button class="btn-page" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">
+                    Siguiente
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-overlay" *ngIf="showAddModal" (click)="closeAddModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h2>{{ selectedAccount ? 'Editar Cuenta' : 'Nueva Cuenta' }}</h2>
+            <button class="close-btn" (click)="closeAddModal()">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="accountCode">Código de Cuenta</label>
+                <input type="text" id="accountCode" class="form-input" [(ngModel)]="newAccount.code"
+                    placeholder="Ej: 1105">
+            </div>
+
+            <div class="form-group">
+                <label for="accountName">Referencia de la Cuenta</label>
+                <input type="text" id="accountName" class="form-input" [(ngModel)]="newAccount.reference"
+                    placeholder="Ej: Cuentas por Cobrar">
+            </div>
+
+            <div class="form-group">
+                <label for="accountName">Nombre de la Cuenta</label>
+                <input type="text" id="accountName" class="form-input" [(ngModel)]="newAccount.name"
+                    placeholder="Ej: Cuentas por Cobrar">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="accountType">Tipo de Cuenta</label>
+                    <select id="accountType" class="form-select" [(ngModel)]="newAccount.type">
+                        <option value="Activo">ACTIVO</option>
+                        <option value="Pasivo">PASIVO</option>
+                        <option value="Patrimonio">PATRIMONIO</option>
+                        <option value="Ingresos">INGRESO</option>
+                        <option value="Gastos">GASTO</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="accountLevel">Nivel</label>
+                    <select id="accountLevel" class="form-select" [(ngModel)]="newAccount.status">
+                        <option value="Activo">1 - Activo</option>
+                        <option value="Inactivo">2 - Inactivo</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-outline" (click)="closeAddModal()">
+                Cancelar
+            </button>
+            <button class="btn btn-primary" (click)="saveAccount()">
+                {{ selectedAccount ? 'Actualizar' : 'Guardar' }}
+            </button>
+        </div>
+    </div>
+</div>
